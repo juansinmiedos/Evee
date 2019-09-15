@@ -58,7 +58,7 @@ hbs.registerHelper('ifUndefined', (value, options) => {
 })
 
 // default value for title local
-app.locals.title = 'Evee Wedding Planners BF'
+app.locals.title = 'Evee Wedding Planners BF '
 
 // Enable authentication using session + passport
 app.use(
