@@ -89,7 +89,7 @@ app.use(
     store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 )
-app.use(flash())
+// app.use(flash())
 require('./passport')(app)
 
 const index = require('./routes/index')
