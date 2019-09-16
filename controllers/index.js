@@ -1,17 +1,11 @@
 const User = require('../models/User')
-const passport = require('passport');
 
 exports.showLogin = (req, res) => {
   res.render("auth/login", { "message": req.flash("error") })
 }
 
-exports.toLogin = (req, res) => {passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/auth/login",
-    failureFlash: true,
-    passReqToCallback: true
-  })
-  res.redirect('/')
+exports.toLogin = (req, res) => {
+  res.redirect('/profile')
 }
 
 exports.showSignup = (req, res) => {
@@ -32,23 +26,11 @@ exports.toSignup = (req, res) => {
       return;
     }
 
-    const salt = bcrypt.genSaltSync(bcryptSalt);
-    const hashPass = bcrypt.hashSync(password, salt);
-
-    const newUser = new User({
-      email,
-      name,
-      lastName,
-      role,
-      password: hashPass
-    });
-
-    newUser.save()
-    .then(() => {
-      res.redirect("/");
-    })
-    .catch(err => {
-      res.render("auth/signup", { message: "Something went wrong" });
+    User.register(new User({email, name, lastName, role}), password, function(err, account) {
+      if (err) {
+        return res.json(err)
+      }
+      return res.redirect('/login')
     })
   })
 }
@@ -59,7 +41,8 @@ exports.toLogOut = (req, res) => {
 }
 
 exports.showProfile = async(req, res) => {
+  console.log('entra a profile?')
   const user = await User.findById(req.user.id)
 
-  res.render('/auth/profile', user)
+  res.render('auth/profile', user)
 }
