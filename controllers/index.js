@@ -5,12 +5,14 @@ exports.showLogin = (req, res) => {
   res.render("auth/login", { "message": req.flash("error") })
 }
 
-exports.toLogin = passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/auth/login",
-  failureFlash: true,
-  passReqToCallback: true
-})
+exports.toLogin = (req, res) => {passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/auth/login",
+    failureFlash: true,
+    passReqToCallback: true
+  })
+  res.redirect('/')
+}
 
 exports.showSignup = (req, res) => {
   res.render("auth/signup")
@@ -54,4 +56,10 @@ exports.toSignup = (req, res) => {
 exports.toLogOut = (req, res) => {
   req.logout();
   res.redirect("/");
+}
+
+exports.showProfile = async(req, res) => {
+  const user = await User.findById(req.user.id)
+
+  res.render('/auth/profile', user)
 }
