@@ -12,6 +12,7 @@ const session    = require("express-session");
 const MongoStore = require('connect-mongo')(session);
 const passport = require('./config/passport')
 const multer = require('./config/multer')
+const flash = require('connect-flash')
 
 mongoose
   .connect('mongodb://localhost/modulo2', { useNewUrlParser: true })
