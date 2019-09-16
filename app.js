@@ -1,15 +1,15 @@
 require('dotenv').config()
 
-const bodyParser   = require('body-parser');
-const cookieParser = require('cookie-parser');
-const express      = require('express');
-const favicon      = require('serve-favicon');
-const hbs          = require('hbs');
-const mongoose     = require('mongoose');
-const logger       = require('morgan');
-const path         = require('path');
-const session    = require("express-session");
-const MongoStore = require('connect-mongo')(session);
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
+const express = require('express')
+const favicon = require('serve-favicon')
+const hbs = require('hbs')
+const mongoose = require('mongoose')
+const logger = require('morgan')
+const path = require('path')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
 const passport = require('./config/passport')
 const multer = require('./config/multer')
 const flash = require('connect-flash')
@@ -41,7 +41,7 @@ app.use(cookieParser())
 app.use(
   session({
     secret: 'SECRET',
-    cookie: {maxAge: 1000 * 60 * 60 * 24},
+    cookie: { maxAge: 1000 * 60 * 60 * 24 },
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({
@@ -98,5 +98,8 @@ app.use('/', index)
 
 const authRoutes = require('./routes/auth')
 app.use('/auth', authRoutes)
+
+const eventRoutes = require('./routes/eventRoutes')
+app.use('/', eventRoutes)
 
 module.exports = app

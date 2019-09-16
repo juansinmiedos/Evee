@@ -1,8 +1,13 @@
 const Event = require('../models/Event')
 // const passport = require('passport');
 
+// No está renderizando la página
 exports.viewEvent = (req, res) => {
   res.render('formWedding/create-event')
+}
+
+exports.createCake = (req, res) => {
+  res.render('formWedding/create-cake')
 }
 
 exports.createEvent = async (req, res) => {
