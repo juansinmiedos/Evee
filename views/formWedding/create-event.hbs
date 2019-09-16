@@ -1,17 +1,81 @@
+<!--Creating the form -->
 <h1>Tell me...</h1>
-
-
-<form>
-  <div class="form-group">
+<form method="POST" >
+  <div class="form-group" >
     <label for="formGroupExampleInput">Name of the event</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Who is getting married?">
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Who is getting married?"  required >
   </div>
   <div class="form-group">
-    <label for="formGroupExampleInput2">Guests</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Who many guests are there?">
+    <label for="formGroupExampleInput2">Number of guests</label>
+    <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Who many guests are there?" required>
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput2">Date of event</label>
-    <input type="date" class="form-control" id="formGroupExampleInput2">
+    <input type="date" class="form-control" id="formGroupExampleInput2" required>
   </div>
+    <h5>Select the services that you need</h5>
+      <div class="form-check">
+      <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+      <label for="">Cake</label>
+      <small><input type="text" name="Comments" id=""></small>
+  </div>
+  <div class="form-check">
+  <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+  <label for="">Furniture</label>
+</div>
+<div class="form-check">
+  <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+  <label for="">Banquet</label>
+</div>
+<div class="form-check">
+  <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+  <label for="">Mobiliary</label>
+</div>
+<h5>Select the addres of event</h5>
+    <div class="form-group">
+      <label for="">Address</label>
+      <input id="address" class="form-control" name="address" type="text" placeholder="Address" readonly/>
+    </div>
+    <div class="form-group">
+      <label for="">Longitude</label>
+      <input id="lng" class="form-control" type="text" name="lng" placeholder="Longitude" readonly/>
+    </div class="form-group">
+    <div>
+      <label for="">Latitude</label>
+      <input id="lat" class="form-control" type="text" name="lat" placeholder="Latitude" readonly/>
+    </div>
+</div>
+  <div>
+    <div id="search"></div>
+    <div id='map'  style='display: inline-flex;width: 500px; height: 300px;'></div>
+  </div>
+  <div id="map" style="width: 500px; height: 400px">
+  <!--Drawing the map -->
+  <script>
+    let input_lng = document.getElementById("lng");
+    let input_lat = document.getElementById("lat");
+    let input_address = document.getElementById("address")
+    mapboxgl.accessToken =
+      "pk.eyJ1IjoibWx6eiIsImEiOiJjanUwbTRtaTQxc3RzNDRtZmdtaXF1dXVxIn0.k3hMbEeCzUKaDn2sIsULjA";
+
+    let map = new mapboxgl.Map({ container: "map", style: "mapbox://styles/mapbox/streets-v11" });
+
+    let geocoder = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken
+    });
+
+    document.getElementById("search").appendChild(geocoder.onAdd(map))
+
+    geocoder.on("result", res => {
+      let [lng, lat] = res.result.center;
+      let address = res.result.place_name;
+      input_lng.value = lng;
+      input_lat.value = lat;
+      input_address.value = address;
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+  </script>
+  </div>
+    <input type="submit" value="Submit Requirement" name="" id="">
 </form>
