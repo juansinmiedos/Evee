@@ -11,7 +11,7 @@ const path         = require('path');
 const session    = require("express-session");
 const MongoStore = require('connect-mongo')(session);
 const passport = require('./config/passport')
-    
+const multer = require('./config/multer')
 
 mongoose
   .connect('mongodb://localhost/modulo2', { useNewUrlParser: true })
