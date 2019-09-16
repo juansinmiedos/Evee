@@ -1,17 +1,17 @@
 require('dotenv').config()
 
-const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
-const express = require('express')
-const favicon = require('serve-favicon')
-const hbs = require('hbs')
-const mongoose = require('mongoose')
-const logger = require('morgan')
-const path = require('path')
-
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
-const flash = require('connect-flash')
+const bodyParser   = require('body-parser');
+const cookieParser = require('cookie-parser');
+const express      = require('express');
+const favicon      = require('serve-favicon');
+const hbs          = require('hbs');
+const mongoose     = require('mongoose');
+const logger       = require('morgan');
+const path         = require('path');
+const session    = require("express-session");
+const MongoStore = require('connect-mongo')(session);
+const passport = require('./config/passport')
+    
 
 mongoose
   .connect('mongodb://localhost/modulo2', { useNewUrlParser: true })
@@ -29,9 +29,29 @@ const app = express()
 
 // Middleware Setup
 app.use(logger('dev'))
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+)
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
+
+app.use(
+  session({
+    secret: 'SECRET',
+    cookie: {maxAge: 1000 * 60 * 60 * 24},
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 24 * 60 * 60 * 1000
+    })
+  })
+)
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 // Express View engine setup
 
