@@ -11,6 +11,6 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-router.get("/profile", isLoggedIn('/auth/login'), catchErrors(showProfile))
+router.get("/profile", isLoggedIn('/login'), catchErrors(showProfile))
 
 module.exports = router;
