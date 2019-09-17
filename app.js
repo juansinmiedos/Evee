@@ -13,6 +13,7 @@ const MongoStore = require('connect-mongo')(session)
 const passport = require('./config/passport')
 const multer = require('./config/multer')
 const flash = require('connect-flash')
+hbs.registerHelper("equal", require("handlebars-helper-equal"))
 
 mongoose
   .connect(process.env.DB, { useNewUrlParser: true })

@@ -49,7 +49,7 @@ exports.toSignup = async(req, res) => {
     from: `Evee - Wedding Planner's New Best Friend <${process.env.EMAIL}>`,
     to: email,
     subject: 'Confirm your account!',
-    html: `<a href="http://localhost:3000/confirm/${confirmationCode}"><h1>Click here to confirm your account</h1></a>`
+    html: `<a href="${req.headers.origin}/confirm/${confirmationCode}"><h1>Click here to confirm your account</h1></a>`
   })
 
   if (email === "" || password === "") {
