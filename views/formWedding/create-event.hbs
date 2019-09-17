@@ -5,6 +5,10 @@
     <label for="">Name of the event</label>
     <input type="text" name="nameOfEvent" class="form-control" id="formGroupExampleInput" placeholder="Who is getting married?"  required >
   </div>
+  <div>
+    <label for="">Description</label><br>
+    <textarea name="description" id="" cols="50" rows="2"></textarea>
+  </div>
   <div class="form-group">
     <label for="">Number of guests</label>
     <input type="number" name="numberOfGuests" class="form-control" id="" placeholder="Who many guests are there?" required>
@@ -48,7 +52,7 @@
     <div id="search"></div>
     <div id='map'  style='display: inline-flex;width: 500px; height: 300px;'></div>
   </div>
-  <div id="map" style="width: 500px; height: 400px"></div>
+  <div id="map" style="width: 500px; height: 400px">
   <!--Drawing the map -->
   <script>
     let input_lng = document.getElementById("lng");
@@ -75,6 +79,5 @@
 
     map.addControl(new mapboxgl.NavigationControl());
   </script>
-  
     <input type="submit" value="Submit Requirement" name="" id="">
 </form>

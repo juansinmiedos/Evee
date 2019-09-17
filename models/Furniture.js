@@ -18,7 +18,7 @@ const furnitureSchema = new Schema(
       default: 'Other'
     },
     lace: Boolean,
-    tent: Boolean,
+    tent: String,
     priceOfService: Number,
     photo: {
       type: String,

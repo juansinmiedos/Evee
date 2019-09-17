@@ -8,19 +8,18 @@ exports.viewEvent = (req, res) => {
 }
 
 exports.createEvent = async (req, res) => {
-  const { nameOfEvent, numberOfGuests, date, address, location } = req.body
+  const { nameOfEvent, numberOfGuests, date, description, address, lng, lat } = req.body
   console.log(req.body)
-  const { url: photo } = req.file
   await Event.create({
     nameOfEvent,
     numberOfGuests,
     date,
+    description,
     address,
     location: {
       type: 'Point',
       coordinates: [lng, lat]
-    },
-    photo
+    }
   })
   res.redirect('/create-event')
 }
@@ -30,17 +29,13 @@ exports.viewFurniture = (req, res) => {
 }
 
 exports.createFurniture = async (req, res) => {
-  const { typeOfTables, mobiliaryStyle, tableClothsAndChairs, lace, tent, imgFurniture } = req.body
-  const { url: photo } = req.file
   console.log(req.body)
+  const { typeOfTables, mobiliaryStyle, tableClothsAndChairs, tent } = req.body
   await Furniture.create({
     typeOfTables,
     mobiliaryStyle,
     tableClothsAndChairs,
-    lace,
-    tent,
-    imgFurniture,
-    photo
+    tent
   })
   res.redirect('/create-furniture')
 }
