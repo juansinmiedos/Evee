@@ -1,24 +1,35 @@
-<h2>Login</h2>
+<div class="main-index">
+  <div class="container">
+    <div class="row" style="min-height: 100vh;">
+      <div class="col-6 m-auto">
+        <div class="card p-4 container-index-form">
+          <form action="/login" method="POST" id="form-container">
 
-<form action="/login" method="POST" id="form-container">
+            <h2>Login</h2>
 
-  <label for="email">Email:</label>
-  <input id="email" type="email" name="email" placeholder="anna.kerr@evee.com">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input id="email" type="email" name="email" placeholder="anna.kerr@evee.com" class="form-control">
+            </div>
 
-  <br><br>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input id="password" type="password" name="password" placeholder="Your password" class="form-control">
+            </div>
 
-  <label for="password">Password:</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  {{#if message }}
-    <div class="error-message">{{ message }}</div>
-  {{/if}}
+            {{#if message }}
+              <div class="error-message">{{ message }}</div>
+            {{/if}}
 
-  <br><br>
+            <button class="btn btn-primary">Login</button>
 
-  <button>Login</button>
-
-  <p class="account-message">
-    Don't have an account yet?
-    <a href="/signup">Signup</a>
-  </p>
-</form>
+            <p class="account-message">
+              <small id="emailHelp" class="form-text text-muted">Do you already have an account?
+                <a href="/signup">Signup</a>
+              </small>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
