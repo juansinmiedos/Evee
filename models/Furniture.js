@@ -13,20 +13,17 @@ const furnitureSchema = new Schema(
       default: 'Other'
     },
     tableClothsAndChairs: {
-      color: String,
-      typeOfCloth: {
-        type: String,
-        enum: ['Silk', 'Cotton', 'Poliester', 'Linen', 'Mixed', 'Other'],
-        default: 'Other'
-      }
+      type: String,
+      enum: ['Silk', 'Cotton', 'Poliester', 'Linen', 'Mixed', 'Other'],
+      default: 'Other'
     },
     lace: Boolean,
     tent: Boolean,
     priceOfService: Number,
-    imgFurnitures: {
-      type: [String],
-      default: 'https://www.dailydot.com/wp-content/uploads/e52/31/87610fa1a0ae891d.png',
-      required: true
+    photo: {
+      type: String,
+      default: 'https://www.dailydot.com/wp-content/uploads/e52/31/87610fa1a0ae891d.png'
+      // required: true
     }
   },
   { timestamps: true }

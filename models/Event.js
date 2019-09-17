@@ -6,6 +6,7 @@ const eventSchema = new Schema(
     numberOfGuests: Number,
     date: Date,
     address: String,
+    description: String,
     location: {
       type: {
         type: String,
