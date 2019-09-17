@@ -13,6 +13,15 @@ const userSchema = new Schema(
     imgProfile: {
       type: String,
       default: 'https://image21.net/103/ring_png/ring_png_0.png'
+    },
+    status: {
+      type: String,
+      enum: ['Pending Confirmation', 'Active'],
+      default: 'Pending Confirmation'
+    },
+    confirmationCode: {
+      type: String,
+      unique: Boolean,
     }
   },
   {
