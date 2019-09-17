@@ -1,12 +1,29 @@
 const User = require('../models/User')
 const nodemailer = require('nodemailer')
+const passport = require('passport');
 
 exports.showLogin = (req, res) => {
-  res.render("auth/login", { "message": req.flash("error") })
+  res.render("auth/login")
 }
 
-exports.toLogin = (req, res) => {
-  res.redirect('/profile')
+exports.toLogin = (req, res, next) => {
+  passport.authenticate("local", (err, user) => {
+    if (err) {
+      return res.render("auth/login", { err });
+    }
+    if (!user) {
+      return res.render("auth/login", { err });
+    }
+    req.logIn(user, err => {
+      if (err) {
+        return res.render("auth/login", { err });
+      }
+      if (user.status === "Pending Confirmation") {
+        return res.render("auth/login", { "message": "Please verify your email" });
+      }
+      return res.redirect("/profile");
+    });
+  })(req, res, next)
 }
 
 exports.showSignup = (req, res) => {
@@ -65,7 +82,7 @@ exports.confirmation = (req, res) => {
       }
       let userEmail = user[0].email
       let userId = user[0]._id
-      res.render('auth/profile', { userEmail, userId })
+      res.render('auth/confirmation-done', { userEmail, userId })
     })
   })
 }
@@ -76,8 +93,14 @@ exports.toLogOut = (req, res) => {
 }
 
 exports.showProfile = async(req, res) => {
-  console.log('entra a profile?')
-  const user = await User.findById(req.user.id)
+  const user = await User.findById(req.user._id)
 
   res.render('auth/profile', user)
 }
+
+// exports.confirmation = (req, res) => {
+//   User.find({ _id: req.params._id })
+//   .then(user => {
+//     let id = user[0]._id
+//   })
+// }

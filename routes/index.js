@@ -5,12 +5,13 @@ const catchErrors = require('../middlewares/catchErrors')
 const isLoggedIn = require('../middlewares/isLoggedIn')
 const isLoggedOut = require('../middlewares/isLoggedOut')
 const checkRoles = require('../middlewares/checkRoles')
+const isAuth = require('../middlewares/isAuth')
 
-/* GET home page */
+
 router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-router.get("/profile", isLoggedIn('/login'), catchErrors(showProfile))
+router.get("/profile", isAuth, isLoggedIn('/login'), catchErrors(showProfile))
 
 module.exports = router;
