@@ -5,6 +5,18 @@ exports.viewEvent = (req, res) => {
   res.render('formWedding/create-event')
 }
 
+exports.createCake = (req, res) => {
+  res.render('formWedding/create-cake')
+}
+
+exports.createPhoto = (req, res) => {
+  res.render('formWedding/create-photo')
+}
+
+exports.createFurniture = (req, res) => {
+  res.render('formWedding/create-furniture')
+}
+
 exports.createEvent = async (req, res) => {
   const { nameOfEvent, numberOfGuests, date, address, location } = req.body
   const { url: photo } = req.file

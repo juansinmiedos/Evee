@@ -25,7 +25,7 @@ const furnitureSchema = new Schema(
     priceOfService: Number,
     imgFurnitures: {
       type: [String],
-      default: '',
+      default: 'https://www.dailydot.com/wp-content/uploads/e52/31/87610fa1a0ae891d.png',
       required: true
     }
   },
