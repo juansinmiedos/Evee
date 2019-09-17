@@ -1,19 +1,19 @@
 <!--Creating the form -->
 <h1>Tell me...</h1>
-<form method="POST" >
+<form action="/create-event" method="POST"/>
   <div class="form-group" >
-    <label for="formGroupExampleInput">Name of the event</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Who is getting married?"  required >
+    <label for="">Name of the event</label>
+    <input type="text" name="nameOfEvent" class="form-control" id="formGroupExampleInput" placeholder="Who is getting married?"  required >
   </div>
   <div class="form-group">
-    <label for="formGroupExampleInput2">Number of guests</label>
-    <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Who many guests are there?" required>
+    <label for="">Number of guests</label>
+    <input type="number" name="numberOfGuests" class="form-control" id="" placeholder="Who many guests are there?" required>
   </div>
   <div class="form-group">
-    <label for="formGroupExampleInput2">Date of event</label>
-    <input type="date" class="form-control" id="formGroupExampleInput2" required>
+    <label for="">Date of event</label>
+    <input type="date" name="date" class="form-control" id="formGroupExampleInput2" required>
   </div>
-    <h5>Select the services that you need</h5>
+    {{!-- <h5>Select the services that you need</h5>
       <div class="form-check">
       <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
       <label for="">Cake</label>
@@ -29,11 +29,11 @@
 <div class="form-check">
   <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
   <label for="">Mobiliary</label>
-</div>
+</div> --}}
 <h5>Select the addres of event</h5>
     <div class="form-group">
       <label for="">Address</label>
-      <input id="address" class="form-control" name="address" type="text" placeholder="Address" readonly/>
+      <input id="address" name="address" class="form-control" name="address" type="text" placeholder="Address" readonly/>
     </div>
     <div class="form-group">
       <label for="">Longitude</label>
@@ -48,7 +48,7 @@
     <div id="search"></div>
     <div id='map'  style='display: inline-flex;width: 500px; height: 300px;'></div>
   </div>
-  <div id="map" style="width: 500px; height: 400px">
+  <div id="map" style="width: 500px; height: 400px"></div>
   <!--Drawing the map -->
   <script>
     let input_lng = document.getElementById("lng");
@@ -75,6 +75,6 @@
 
     map.addControl(new mapboxgl.NavigationControl());
   </script>
-  </div>
+  
     <input type="submit" value="Submit Requirement" name="" id="">
 </form>
