@@ -1,42 +1,42 @@
 const User = require('../models/User')
 const nodemailer = require('nodemailer')
-const passport = require('passport');
+const passport = require('passport')
 
 exports.showLogin = (req, res) => {
-  res.render("auth/login")
+  res.render('auth/login')
 }
 
 exports.toLogin = (req, res, next) => {
-  passport.authenticate("local", (err, user) => {
+  passport.authenticate('local', (err, user) => {
     if (err) {
-      return res.render("auth/login", { err });
+      return res.render('auth/login', { err })
     }
     if (!user) {
-      return res.render("auth/login", { err });
+      return res.render('auth/login', { err })
     }
     req.logIn(user, err => {
       if (err) {
-        return res.render("auth/login", { err });
+        return res.render('auth/login', { err })
       }
-      if (user.status === "Pending Confirmation") {
-        return res.render("auth/login", { "message": "Please verify your email" });
+      if (user.status === 'Pending Confirmation') {
+        return res.render('auth/login', { message: 'Please verify your email' })
       }
-      return res.redirect("/profile");
-    });
+      return res.redirect('/profile')
+    })
   })(req, res, next)
 }
 
 exports.showSignup = (req, res) => {
-  res.render("auth/signup")
+  res.render('auth/signup')
 }
 
-exports.toSignup = async(req, res) => {
-  const {email, name, lastName, role} = req.body;
-  const password = req.body.password;
-  const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  let confirmationCode = '';
+exports.toSignup = async (req, res) => {
+  const { email, name, lastName, role } = req.body
+  const password = req.body.password
+  const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  let confirmationCode = ''
   for (let i = 0; i < 25; i++) {
-    confirmationCode += characters[Math.floor(Math.random() * characters.length )];
+    confirmationCode += characters[Math.floor(Math.random() * characters.length)]
   }
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -49,21 +49,25 @@ exports.toSignup = async(req, res) => {
     from: `Evee - Wedding Planner's New Best Friend <${process.env.EMAIL}>`,
     to: email,
     subject: 'Confirm your account!',
-    html: `<a href="${req.headers.origin}/confirm/${confirmationCode}"><h1>Click here to confirm your account</h1></a>`
+    html: `
+            <a href="${req.headers.origin}/confirm/${confirmationCode}"><img src="https://res.cloudinary.com/ironhacker/image/upload/v1568781197/Evee_upu2zq.png" width="700px"></a>`
   })
 
-  if (email === "" || password === "") {
-    res.render("auth/signup", { message: "Indicate email and password" });
-    return;
+  if (email === '' || password === '') {
+    res.render('auth/signup', { message: 'Indicate email and password' })
+    return
   }
 
-  User.findOne({ email }, "email", (err, user) => {
+  User.findOne({ email }, 'email', (err, user) => {
     if (user !== null) {
-      res.render("auth/signup", { message: "The email already exists" });
-      return;
+      res.render('auth/signup', { message: 'The email already exists' })
+      return
     }
 
-    User.register(new User({email, name, lastName, role, confirmationCode}), password, function(err, account) {
+    User.register(new User({ email, name, lastName, role, confirmationCode }), password, function(
+      err,
+      account
+    ) {
       if (err) {
         return res.json(err)
       }
@@ -88,17 +92,17 @@ exports.confirmation = (req, res) => {
 }
 
 exports.toLogOut = (req, res) => {
-  req.logout();
-  res.redirect("/");
+  req.logout()
+  res.redirect('/')
 }
 
-exports.showProfile = async(req, res) => {
+exports.showProfile = async (req, res) => {
   const user = await User.findById(req.user._id)
 
   res.render('auth/profile', user)
 }
 
-exports.showHome = async(req, res) => {
+exports.showHome = async (req, res) => {
   const user = await User.findById(req.user._id)
 
   res.render('home', user)

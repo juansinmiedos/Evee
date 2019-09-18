@@ -1,9 +1,9 @@
 body {
   padding: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif; }
 
 a {
-  color: #00B7FF; }
+  color: #00b7ff; }
 
 .main-index {
   height: 100vh;
@@ -33,5 +33,8 @@ a {
 .hero-title h1 {
   font-family: 'Pacifico', cursive;
   font-size: 100px; }
+
+.center-main {
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */

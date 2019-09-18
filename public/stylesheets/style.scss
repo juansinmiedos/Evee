@@ -1,10 +1,10 @@
 body {
   padding: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
 
 .main-index {
@@ -26,17 +26,20 @@ a {
   }
 }
 
-.container-index-form{
+.container-index-form {
   position: relative;
   z-index: 2;
 }
 
-.hero-title{
+.hero-title {
   color: white;
   z-index: 2;
 }
 
-.hero-title h1{
+.hero-title h1 {
   font-family: 'Pacifico', cursive;
   font-size: 100px;
+}
+.center-main {
+  text-align: center;
 }
