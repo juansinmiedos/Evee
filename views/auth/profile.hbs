@@ -1,33 +1,33 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-  <a class="navbar-brand" href="#">Evee</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <a class="navbar-brand" href="#">Evee</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      {{#equal this.role "Supplier"}}
-      <li class="nav-item active">
-        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-      </li>
-      {{/equal}}
-      {{#if user}}
-      <li class="nav-item active">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/signup">Signup</a>
-      </li>
-      {{/if}}
-      <li class="nav-item active">
-        <a class="nav-link" href="/logout">Logout</a>
-      </li>
-    </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        {{#equal this.role "Supplier"}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        {{/equal}}
+        {{#if user}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/signup">Signup</a>
+        </li>
+        {{/if}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 </nav>
 
 
@@ -71,8 +71,268 @@
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <div class="content p-3">
         <h3>Your current events</h3>
-        <button class="btn btn-primary">+ Create a New Event</button>
+
+        {{!-- BOTON QUE DESPLIEGA FORMULARIO --}}
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+          + Create a New Event
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Create a New Event</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container">
+                  <!--Creating the form -->
+                  <form action="/create-event" method="POST" />
+                  <div class="form-group">
+                    <label for="">Name of the event</label>
+                    <input type="text" name="nameOfEvent" class="form-control" id="formGroupExampleInput"
+                      placeholder="Who is getting married? (ex. Julian & Luisa)" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Number of guests</label>
+                    <input type="number" name="numberOfGuests" class="form-control" id=""
+                      placeholder="Who many guests are there?" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Date of event</label>
+                    <input type="date" name="date" class="form-control" id="formGroupExampleInput2" required>
+                  </div>
+
+
+                  <h5>Select the services that you need</h5>
+
+                  {{!-- <div class="form-group">
+                    <label for="role">Role:</label>
+                    <select id="selectCake" type="text" name="role" placeholder="anna.kerr@evee.com"
+                      class="form-control">
+                      <option value="Wedding">Wedding Planner</option>
+                      <option value="Supplier">Supplier</option>
+                    </select>
+                  </div> --}}
+
+                  <div class="form-check">
+                    <input class="form-check-input position-static" type="checkbox" onclick="myCakeFunction()" id="selectCake" value="option1"
+                      aria-label="...">
+                    <label for="">Cake</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input position-static" type="checkbox" onclick="myFurnitureFunction()" id="selectFurniture" value="option1"
+                      aria-label="...">
+                    <label for="">Furniture</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input position-static" type="checkbox" onclick="myPhotoFunction()" id="selectPhoto" value="option1"
+                      aria-label="...">
+                    <label for="">Photography</label>
+                  </div>
+
+
+                  <label for="">Select location of event</label>
+                  <div class="form-group" style="display: none">
+                    <label for="">Longitude</label>
+                    <input id="lng" class="form-control" type="text" name="lng" placeholder="Longitude" readonly />
+                  </div>
+                  <div class="form-group" style="display: none">
+                    <label for="">Latitude</label>
+                    <input id="lat" class="form-control" type="text" name="lat" placeholder="Latitude" readonly />
+                  </div>
+
+                  <div>
+                    <div id="search"></div>
+                    <div id='map' style='display: inline-flex;width: 500px; height: 300px;'></div>
+                  </div>
+                  <div class="form-group">
+                    <input id="address" name="address" class="form-control" name="address" type="text"
+                      placeholder="Address" readonly />
+                  </div>
+                  <!--Drawing the map -->
+                  <script>
+                    let input_lng = document.getElementById("lng");
+                    let input_lat = document.getElementById("lat");
+                    let input_address = document.getElementById("address")
+                    mapboxgl.accessToken =
+                      "pk.eyJ1IjoibWx6eiIsImEiOiJjanUwbTRtaTQxc3RzNDRtZmdtaXF1dXVxIn0.k3hMbEeCzUKaDn2sIsULjA";
+
+                    let map = new mapboxgl.Map({ container: "map", style: "mapbox://styles/mapbox/streets-v11" });
+
+                    let geocoder = new MapboxGeocoder({
+                      accessToken: mapboxgl.accessToken
+                    });
+
+                    document.getElementById("search").appendChild(geocoder.onAdd(map))
+
+                    geocoder.on("result", res => {
+                      let [lng, lat] = res.result.center;
+                      let address = res.result.place_name;
+                      input_lng.value = lng;
+                      input_lat.value = lat;
+                      input_address.value = address;
+                    });
+
+                    map.addControl(new mapboxgl.NavigationControl());
+                  </script>
+                  <div class="form-group">
+                    <label for="">Description</label><br>
+                    <textarea name="description" id="" class="form-control" cols="50" rows="4"
+                      placeholder="Give a complete description of the event so the supplier know if they can help you with your requirements"></textarea>
+                  </div>
+                  <input type="submit" class="btn btn-primary" value="Submit Requirement" name="" id="">
+                  </form>
+
+                  <div id="cakeSection" style="display: none">
+
+                    <hr>
+
+                    <h3>Cake</h3>
+                    <form action="" method="POST">
+                      <!---->
+                      <div class="form-group">
+                        <label for="">Type of cake</label>
+                        <input type="text" class="form-control" name="name" id=""
+                          placeholder="What type of cake do you need? ex. Butter cake">
+                      </div>
+                      <!---->
+                      <div class="form-group">
+                        <label for="">Flavor</label>
+                        <input type="text" class="form-control" name="flavor" id=""
+                          placeholder="Whats the main flavor the bread should have? ex. Vanilla">
+                      </div>
+                      <!---->
+                      <div class="form-group">
+                        <label for="">Filling</label>
+                        <input type="text" class="form-control" name="filling" id=""
+                          placeholder="What aditional texture and flavor do you require? Ex. Strawberries and champagne cream">
+                      </div>
+                      <!---->
+                      <div class="form-group">
+                        <label for="">Type of cover</label>
+                        <select class="form-control" name="term" id="">
+                          <option value="Glazed">Glazed</option>
+                          <option value="Fondant">Fondant</option>
+                          <option value="Meringue">Meringue</option>
+                          <option value="Chantilli">Whipped cream/Chantilli</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+                      <!---->
+                      <div class="form-group">
+                        <label for="">Floors</label>
+                        <input type="number" class="form-control" name="floors" id="">
+                      </div>
+                      <!-- -->
+                      <div class="form-group">
+                        <label for="">Description</label><br>
+                        <textarea name="description" id="" class="form-control" cols="50" rows="4"
+                          placeholder="Feel free to describe the perfect cake that the couple is looking and upload pictures below."></textarea>
+                      </div>
+                      <!---->
+                      {{!-- <div class="form-group">
+    <label for="">Upload an Image!</label><br>
+    <input  type="file" name="imgCake">
+  </div> --}}
+                      <input type="submit" class="btn btn-primary" name="" id="">
+                    </form>
+                  </div>
+
+                  
+                  <div id="furnitureSection" style="display: none">
+
+                    <hr>
+                    
+                    <h3>Furniture</h3>
+                    <form action="/create-furniture" method="POST">
+                      <div class="form-group">
+                        <label for="">Type of tables</label>
+                        <select name="typeOfTables" class="form-control" id="">
+                          <option value="Triangular">Triangular</option>
+                          <option value="Round">Round</option>
+                          <option value="Rectangular">Rectangular</option>
+                          <option value="Hexagonal">Hexagonal</option>
+                          <option value="Square">Square</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="">Mobiliary Style</label>
+                        <select name="mobiliaryStyle" class="form-control" id="">
+                          <option value="Minimalist">Minimalist</option>
+                          <option value="Wood">Wood</option>
+                          <option value="Plastic">Plastic</option>
+                          <option value="Steel">Steel</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col">
+                            <label for="">Table cloth and chairs</label>
+                            <select name="tableClothsAndChairs" class="form-control" id="">
+                              <option value="Silk">Silk</option>
+                              <option value="Cotton">Cotton</option>
+                              <option value="Poliester">Poliester</option>
+                              <option value="Linen">Linen</option>
+                              <option value="Mixed">Mixed</option>
+                              <option value="Other">Other</option>
+                            </select>
+                          </div>
+                          <div class="col">
+                            <label for="">&nbsp;</label>
+                            <input type="text" name="color" id="" placeholder="Colors" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="">Do you require tent?</label>
+                        <input type="checkbox" name="tent">
+                      </div>
+                      <input type="submit" name="" class="btn btn-primary" value="Send requirement" id="">
+                    </form>
+                  </div>
+
+                  <div id="photoSection" style="display: none">
+                    <hr>
+
+                    <h3>Photography</h3>
+                    <form action="" method="POST">
+                      <div class="form-group">
+                        <label for="">Type of album</label>
+                        <select class="form-control" type="text" name="typeOfAlbum" id="">
+                          <option value="Photo Album">Photo Album</option>
+                          <option value="Video Album">Video Album</option>
+                          <option value="Both">Both</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label for="">Hours of service</label>
+                        <input type="number" class="form-control" name="hoursOfService" id="">
+                      </div><br>
+                      <input type="submit" class="btn btn-primary" name="" id="">
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      {{!-- </div> --}}
 
       <div class="card-deck">
         <div class="card">

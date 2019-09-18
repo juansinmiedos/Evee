@@ -30,19 +30,11 @@ exports.showSignup = (req, res) => {
   res.render('auth/signup')
 }
 
-<<<<<<< HEAD
-exports.toSignup = async (req, res) => {
-  const { email, name, lastName, role } = req.body
-  const password = req.body.password
-  const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  let confirmationCode = ''
-=======
 exports.toSignup = async(req, res) => {
   const {email, name, lastName, role, suppliesFurniture, suppliesCake, suppliesPhoto} = req.body;
   const password = req.body.password;
   const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let confirmationCode = '';
->>>>>>> c7340a95a07042e79a9a1f9bbf6b5bbed5024511
   for (let i = 0; i < 25; i++) {
     confirmationCode += characters[Math.floor(Math.random() * characters.length)]
   }
@@ -72,14 +64,7 @@ exports.toSignup = async(req, res) => {
       return
     }
 
-<<<<<<< HEAD
-    User.register(new User({ email, name, lastName, role, confirmationCode }), password, function(
-      err,
-      account
-    ) {
-=======
     User.register(new User({email, name, lastName, role, confirmationCode, suppliesFurniture, suppliesCake, suppliesPhoto}), password, function(err, account) {
->>>>>>> c7340a95a07042e79a9a1f9bbf6b5bbed5024511
       if (err) {
         return res.json(err)
       }
