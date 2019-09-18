@@ -22,7 +22,10 @@ const userSchema = new Schema(
     confirmationCode: {
       type: String,
       unique: Boolean,
-    }
+    },
+    suppliesPhoto: String,
+    suppliesCake: String,
+    suppliesFurniture: String,
   },
   {
     timestamps: {

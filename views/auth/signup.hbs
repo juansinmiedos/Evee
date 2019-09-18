@@ -6,7 +6,7 @@
           <form action="/signup" method="POST" id="form-container">
 
             <h2>Signup</h2>
-            
+
             <div class="form-group">
               <label for="name">Name:</label>
               <input id="name" type="text" name="name" placeholder="Anna" class="form-control">
@@ -25,10 +25,32 @@
 
             <div class="form-group">
               <label for="role">Role:</label>
-              <select id="role" type="text" name="role" placeholder="anna.kerr@evee.com" class="form-control">
+              <select id="seeAnotherFieldGroup" type="text" name="role" placeholder="anna.kerr@evee.com" class="form-control">
                 <option value="Wedding">Wedding Planner</option>
                 <option value="Supplier">Supplier</option>
               </select>
+            </div>
+
+            <div class="form-group" id="otherFieldGroupDiv">
+              <label>What do you supply? (select all that applies)</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="suppliesPhoto" id="suppliesPhoto" name="suppliesPhoto">
+                <label class="form-check-label" for="suppliesPhoto">
+                  Phography
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="suppliesCake" id="suppliesCake" name="suppliesCake">
+                <label class="form-check-label" for="suppliesCake">
+                  Cake
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="suppliesFurniture" id="suppliesFurniture" name="suppliesFurniture">
+                <label class="form-check-label" for="suppliesFurniture">
+                  Furniture
+                </label>
+              </div>
             </div>
 
             <div class="form-group">
@@ -37,7 +59,7 @@
             </div>
 
             {{#if message }}
-              <div class="error-message">{{ message }}</div>
+            <div class="error-message">{{ message }}</div>
             {{/if}}
 
             <button class="btn btn-primary">Create account</button>
