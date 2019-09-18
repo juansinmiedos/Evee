@@ -9,19 +9,19 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      {{#equal this.role "Supplier"}}
+      {{#equal this.user.role "Supplier"}}
       <li class="nav-item active">
         <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
       </li>
       {{/equal}}
-      {{#if user}}
+      {{#unless this.user}}
       <li class="nav-item active">
         <a class="nav-link" href="/login">Login</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="/signup">Signup</a>
       </li>
-      {{/if}}
+      {{/unless}}
       <li class="nav-item active">
         <a class="nav-link" href="/logout">Logout</a>
       </li>
@@ -40,7 +40,7 @@
     </div>
     <div class="col-8">
       <div class="jumbotron">
-        <h1 class="display-4">Hi, {{this.name}}</h1>
+        <h1 class="display-4">Hi, {{this.user.name}}</h1>
         <p class="lead">Welcome to your profile!<br>Here you can add your upcoming events, post your requirements and
           wait for offers and quotes from interested suppliers.</p>
         <hr class="my-4">
@@ -52,7 +52,7 @@
   </div>
 
   <hr>
-  {{#equal this.role 'Wedding'}}
+  {{#equal this.user.role 'Wedding'}}
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
@@ -73,9 +73,30 @@
         <h3>Your current events</h3>
         <button class="btn btn-primary">+ Create a New Event</button>
       </div>
-
       <div class="card-deck">
+      {{#each this.events }}
         <div class="card">
+          <img src="https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-stgeorge/a23cfc0b-d183-45c0-af92-e2ed53d2bffe"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{this.nameOfEvent}}</h5>
+            <small class="text-muted">Date of event</small>
+            <p class="card-text">{{this.date}}</p>
+
+            <small class="text-muted">Location</small>
+            <p class="card-text">{{this.address}}</p>
+
+            <small class="text-muted">Number of guests</small>
+            <p class="card-text">{{this.numberOfGuests}} guests</p>
+          </div>
+          <div class="card-footer">
+            <div class="text-center">
+              <button class="btn btn-primary">Go to event page</button>
+              <button class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+        {{!-- <div class="card">
           <img src="https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-stgeorge/a23cfc0b-d183-45c0-af92-e2ed53d2bffe"
             class="card-img-top" alt="...">
           <div class="card-body">
@@ -95,29 +116,8 @@
               <button class="btn btn-danger">Delete</button>
             </div>
           </div>
-        </div>
-        <div class="card">
-          <img src="https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-stgeorge/a23cfc0b-d183-45c0-af92-e2ed53d2bffe"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Name of event</h5>
-            <small class="text-muted">Date of event</small>
-            <p class="card-text">Feb 11th 2020</p>
-
-            <small class="text-muted">Location</small>
-            <p class="card-text">Tonalá 10, Roma Norte, Cuauhtémoc, CDMX</p>
-
-            <small class="text-muted">Number of guests</small>
-            <p class="card-text">300 people</p>
-          </div>
-          <div class="card-footer">
-            <div class="text-center">
-              <button class="btn btn-primary">Go to event page</button>
-              <button class="btn btn-danger">Delete</button>
-            </div>
-          </div>
-        </div>
-        <div class="card">
+        </div> --}}
+         {{!-- <div class="card">
           <img src="https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-stgeorge/a23cfc0b-d183-45c0-af92-e2ed53d2bffe"
             class="card-img-top" alt="...">
           <div class="card-body">
@@ -137,7 +137,8 @@
               <button class="btn btn-danger">Delete</button>
             </div>
           </div>
-        </div>
+        </div> --}}
+      {{/each}}
       </div>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -278,7 +279,7 @@
     </div>
   </div>
   {{/equal}}
-  {{#equal this.role 'Supplier'}}
+  {{#equal this.user.role 'Supplier'}}
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"

@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const Event = require('../models/Event')
 const nodemailer = require('nodemailer')
 const passport = require('passport')
 
@@ -30,19 +31,11 @@ exports.showSignup = (req, res) => {
   res.render('auth/signup')
 }
 
-<<<<<<< HEAD
 exports.toSignup = async (req, res) => {
-  const { email, name, lastName, role } = req.body
+  const { email, name, lastName, role, suppliesFurniture, suppliesCake, suppliesPhoto } = req.body
   const password = req.body.password
   const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
   let confirmationCode = ''
-=======
-exports.toSignup = async(req, res) => {
-  const {email, name, lastName, role, suppliesFurniture, suppliesCake, suppliesPhoto} = req.body;
-  const password = req.body.password;
-  const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  let confirmationCode = '';
->>>>>>> c7340a95a07042e79a9a1f9bbf6b5bbed5024511
   for (let i = 0; i < 25; i++) {
     confirmationCode += characters[Math.floor(Math.random() * characters.length)]
   }
@@ -72,19 +65,25 @@ exports.toSignup = async(req, res) => {
       return
     }
 
-<<<<<<< HEAD
-    User.register(new User({ email, name, lastName, role, confirmationCode }), password, function(
-      err,
-      account
-    ) {
-=======
-    User.register(new User({email, name, lastName, role, confirmationCode, suppliesFurniture, suppliesCake, suppliesPhoto}), password, function(err, account) {
->>>>>>> c7340a95a07042e79a9a1f9bbf6b5bbed5024511
-      if (err) {
-        return res.json(err)
+    User.register(
+      new User({
+        email,
+        name,
+        lastName,
+        role,
+        confirmationCode,
+        suppliesFurniture,
+        suppliesCake,
+        suppliesPhoto
+      }),
+      password,
+      function(err, account) {
+        if (err) {
+          return res.json(err)
+        }
+        return res.render('auth/confirmation')
       }
-      return res.render('auth/confirmation')
-    })
+    )
   })
 }
 
@@ -110,9 +109,18 @@ exports.toLogOut = (req, res) => {
 
 exports.showProfile = async (req, res) => {
   const user = await User.findById(req.user._id)
-
-  res.render('auth/profile', user)
+  const events = await Event.find()
+  console.log(events)
+  console.log(user)
+  res.render('auth/profile', { user, events })
+  // res.render('auth/profile', events)
 }
+
+// exports.showEvents = async (req, res) => {
+//   const events = await Event.find()
+//   console.log(events)
+//   res.render('auth/profile', { events })
+// }
 
 exports.showHome = async (req, res) => {
   const user = await User.findById(req.user._id)

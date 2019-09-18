@@ -21,11 +21,11 @@ const userSchema = new Schema(
     },
     confirmationCode: {
       type: String,
-      unique: Boolean,
+      unique: Boolean
     },
     suppliesPhoto: String,
     suppliesCake: String,
-    suppliesFurniture: String,
+    suppliesFurniture: String
   },
   {
     timestamps: {
