@@ -81,7 +81,6 @@ exports.toSignup = async (req, res) => {
         if (err) {
           return res.json(err)
         }
-        return res.render('auth/confirmation')
       }
     )
   })
