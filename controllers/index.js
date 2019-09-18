@@ -98,6 +98,12 @@ exports.showProfile = async(req, res) => {
   res.render('auth/profile', user)
 }
 
+exports.showHome = async(req, res) => {
+  const user = await User.findById(req.user._id)
+
+  res.render('home', user)
+}
+
 // exports.confirmation = (req, res) => {
 //   User.find({ _id: req.params._id })
 //   .then(user => {

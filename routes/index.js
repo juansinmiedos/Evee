@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const {showProfile} = require('../controllers/index');
+const {showProfile, showHome} = require('../controllers/index');
 const catchErrors = require('../middlewares/catchErrors')
 const isLoggedIn = require('../middlewares/isLoggedIn')
 const isLoggedOut = require('../middlewares/isLoggedOut')
@@ -13,5 +13,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get("/profile", isAuth, isLoggedIn('/login'), catchErrors(showProfile))
+
+router.get("/home", isAuth, isLoggedIn('/login'), checkRoles('Supplier'), catchErrors(showHome))
 
 module.exports = router;

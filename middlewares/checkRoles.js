@@ -3,9 +3,9 @@ module.exports = role => (req, res, next) => {
     if (req.user.role === role) {
       next()
     } else {
-      res.redirect('/auth/login')
+      res.redirect('profile')
     }
   } else {
-    res.redirect('/auth/login')
+    res.redirect('profile')
   }
 }
