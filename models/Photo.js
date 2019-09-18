@@ -7,6 +7,7 @@ const photoSchema = new Schema(
       enum: ['Photo Album', 'Video Album', 'Both']
     },
     hoursOfService: Number,
+    description: String,
     priceOfService: Number
   },
   { timestamps: true }

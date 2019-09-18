@@ -10,6 +10,7 @@ const cakeSchema = new Schema(
     },
     filling: String,
     floors: Number,
+    description: String,
     imgCake: {
       type: [String],
       default:
