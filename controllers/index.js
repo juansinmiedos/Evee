@@ -31,7 +31,7 @@ exports.showSignup = (req, res) => {
 }
 
 exports.toSignup = async(req, res) => {
-  const {email, name, lastName, role} = req.body;
+  const {email, name, lastName, role, suppliesFurniture, suppliesCake, suppliesPhoto} = req.body;
   const password = req.body.password;
   const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let confirmationCode = '';
@@ -63,7 +63,7 @@ exports.toSignup = async(req, res) => {
       return;
     }
 
-    User.register(new User({email, name, lastName, role, confirmationCode}), password, function(err, account) {
+    User.register(new User({email, name, lastName, role, confirmationCode, suppliesFurniture, suppliesCake, suppliesPhoto}), password, function(err, account) {
       if (err) {
         return res.json(err)
       }
