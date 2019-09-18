@@ -20,6 +20,7 @@ const furnitureSchema = new Schema(
     lace: Boolean,
     tent: String,
     priceOfService: Number,
+    description: String,
     photo: {
       type: String,
       default: 'https://www.dailydot.com/wp-content/uploads/e52/31/87610fa1a0ae891d.png'

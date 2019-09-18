@@ -107,7 +107,7 @@
                   </div>
 
 
-                  <h5>Select the services that you need</h5>
+                  <label>Select the services that you need</label>
 
                   {{!-- <div class="form-group">
                     <label for="role">Role:</label>
@@ -119,18 +119,18 @@
                   </div> --}}
 
                   <div class="form-check">
-                    <input class="form-check-input position-static" type="checkbox" onclick="myCakeFunction()" id="selectCake" value="option1"
-                      aria-label="...">
+                    <input class="form-check-input position-static" type="checkbox" onclick="myCakeFunction()"
+                      id="selectCake" value="option1" aria-label="...">
                     <label for="">Cake</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input position-static" type="checkbox" onclick="myFurnitureFunction()" id="selectFurniture" value="option1"
-                      aria-label="...">
+                    <input class="form-check-input position-static" type="checkbox" onclick="myFurnitureFunction()"
+                      id="selectFurniture" value="option1" aria-label="...">
                     <label for="">Furniture</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input position-static" type="checkbox" onclick="myPhotoFunction()" id="selectPhoto" value="option1"
-                      aria-label="...">
+                    <input class="form-check-input position-static" type="checkbox" onclick="myPhotoFunction()"
+                      id="selectPhoto" value="option1" aria-label="...">
                     <label for="">Photography</label>
                   </div>
 
@@ -147,7 +147,7 @@
 
                   <div>
                     <div id="search"></div>
-                    <div id='map' style='display: inline-flex;width: 500px; height: 300px;'></div>
+                    <div id='map' style='display: inline-flex;width: 100%; height: 300px;'></div>
                   </div>
                   <div class="form-group">
                     <input id="address" name="address" class="form-control" name="address" type="text"
@@ -161,13 +161,13 @@
                     mapboxgl.accessToken =
                       "pk.eyJ1IjoibWx6eiIsImEiOiJjanUwbTRtaTQxc3RzNDRtZmdtaXF1dXVxIn0.k3hMbEeCzUKaDn2sIsULjA";
 
-                    let map = new mapboxgl.Map({ container: "map", style: "mapbox://styles/mapbox/streets-v11" });
+                    let map = new mapboxgl.Map({ container: "map", style: "mapbox://styles/mapbox/streets-v11", center: [-99.1332049, 19.4326018], zoom: 11 });
 
                     let geocoder = new MapboxGeocoder({
-                      accessToken: mapboxgl.accessToken
+                      accessToken: mapboxgl.accessToken,
                     });
 
-                    document.getElementById("search").appendChild(geocoder.onAdd(map))
+                    map.addControl(geocoder)
 
                     geocoder.on("result", res => {
                       let [lng, lat] = res.result.center;
@@ -177,7 +177,7 @@
                       input_address.value = address;
                     });
 
-                    map.addControl(new mapboxgl.NavigationControl());
+                    //map.addControl(new mapboxgl.NavigationControl());
                   </script>
                   <div class="form-group">
                     <label for="">Description</label><br>
@@ -238,15 +238,19 @@
     <label for="">Upload an Image!</label><br>
     <input  type="file" name="imgCake">
   </div> --}}
-                      <input type="submit" class="btn btn-primary" name="" id="">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="validatedCustomFile">
+                        <label class="custom-file-label" for="validatedCustomFile">Upload desired furniture photos</label>
+                      </div>
+                      <input type="submit" class="btn btn-primary" name="" id="" value="Send cake request">
                     </form>
                   </div>
 
-                  
+
                   <div id="furnitureSection" style="display: none">
 
                     <hr>
-                    
+
                     <h3>Furniture</h3>
                     <form action="/create-furniture" method="POST">
                       <div class="form-group">
@@ -296,7 +300,17 @@
                         <label for="">Do you require tent?</label>
                         <input type="checkbox" name="tent">
                       </div>
-                      <input type="submit" name="" class="btn btn-primary" value="Send requirement" id="">
+
+                      <div class="form-group">
+                        <label for="">Description</label><br>
+                        <textarea name="description" id="" class="form-control" cols="50" rows="4"
+                          placeholder="You can describe the place and the furniture requirements in detail here. You can add pictures below"></textarea>
+                      </div>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="validatedCustomFile">
+                        <label class="custom-file-label" for="validatedCustomFile">Upload desired furniture photos</label>
+                      </div>
+                      <input type="submit" name="" class="btn btn-primary" value="Send furniture request" id="">
                     </form>
                   </div>
 
@@ -313,11 +327,20 @@
                           <option value="Both">Both</option>
                         </select>
                       </div>
-                      <div>
+                      <div class="form-group">
                         <label for="">Hours of service</label>
                         <input type="number" class="form-control" name="hoursOfService" id="">
-                      </div><br>
-                      <input type="submit" class="btn btn-primary" name="" id="">
+                      </div>
+                      <div class="form-group">
+                        <label for="">Description</label><br>
+                        <textarea name="description" id="" class="form-control" cols="50" rows="4"
+                          placeholder="What type of photos do you want to have?"></textarea>
+                      </div>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="validatedCustomFile">
+                        <label class="custom-file-label" for="validatedCustomFile">Upload sample pictures</label>
+                      </div>
+                      <input type="submit" class="btn btn-primary" name="" id="" value="Send photo request">
                     </form>
                   </div>
 
