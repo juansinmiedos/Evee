@@ -2,6 +2,7 @@ const Event = require('../models/Event')
 const Furniture = require('../models/Furniture')
 const Photo = require('../models/Photo')
 const Cake = require('../models/Cake')
+const User = require('../models/User')
 
 exports.viewEvent = (req, res) => {
   res.render('formWedding/create-event')
@@ -70,4 +71,18 @@ exports.createCake = async (req, res) => {
     description
   })
   res.redirect('/profile')
+}
+
+//Traemos la información de todos los modelos
+
+exports.viewEventPage = async (req, res) => {
+  const user = await User.find()
+  const event = await Event.find()
+  const furniture = await Furniture.find()
+  const cake = await Cake.find()
+  const photo = await Photo.find()
+
+  console.log(event, user, furniture, cake, photo)
+
+  res.render('event-page', { event, user, furniture, cake, photo })
 }

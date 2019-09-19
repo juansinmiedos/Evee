@@ -10,7 +10,8 @@ const {
   createFurniture,
   viewFurniture,
   viewPhoto,
-  viewCake
+  viewCake,
+  viewEventPage
 } = require('../controllers/event')
 
 router.get('/create-event', viewEvent)
@@ -24,5 +25,7 @@ router.post('/create-photo', uploadCloud.array('photosPhoto'), createPhoto)
 
 router.get('/create-furniture', viewFurniture)
 router.post('/create-furniture', uploadCloud.array('photosFurniture'), catchErrors(createFurniture))
+
+router.get('/event-page', viewEventPage)
 
 module.exports = router
