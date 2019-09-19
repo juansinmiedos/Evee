@@ -95,3 +95,8 @@ exports.updateProfile = async (req, res) => {
   await User.findByIdAndUpdate(_id, updatedUser)
   res.redirect('/profile')
 }
+
+exports.deleteEvent = async (req, res) => {
+  await Event.findByIdAndDelete(req.params.id)
+  res.redirect('/profile')
+}
