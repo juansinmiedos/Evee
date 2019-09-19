@@ -34,7 +34,7 @@
   <div class="row">
     <div class="col-4 m-auto">
       <div class="card">
-        <img src="https://image21.net/103/ring_png/ring_png_0.png" class="card-img-top" alt="...">
+        <img src="{{this.user.imgProfile}}" class="card-img-top" alt="...">
       </div>
     </div>
     <div class="col-8">
@@ -45,7 +45,39 @@
         <hr class="my-4">
         <p>We only ask you for the most basic information in order to help you, if you want to update the information
           you gave us, click the next button.</p>
-        <a class="btn btn-primary" href="#" role="button">Edit profile</a>
+        <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#ModalProfile">Edit profile</a>
+<!--Modal for edit profile-->
+        <div class="modal fade" id="ModalProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Edit Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                  </div>
+                    <div class="modal-body">
+                      <form action="/profile" method="post">
+                        {{!-- <label for="">Profile picture:</label>
+                        <input type="file"  class="form-control" name="photo" id="">
+                        <hr> --}}
+                        <label for="">Email</label>
+                        <input type="text" class="form-control" name="" placeholder="{{this.user.email}}"  id="" readonly>
+                        <hr>
+                        <label for="">Name:</label>
+                        <input type="text" class="form-control" name="name" placeholder="{{this.user.name}}" id="">
+                        <hr>
+                        <label for="">Last name:</label>
+                        <input type="text"  class="form-control" name="lastName" placeholder="{{this.user.lastName}}" id="">
+                        <hr>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        </form>
+                    </div>
+                        <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

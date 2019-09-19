@@ -53,7 +53,6 @@ exports.createPhoto = async (req, res, next) => {
     description
   })
   next()
-  
 }
 
 exports.viewCake = (req, res) => {
@@ -85,4 +84,14 @@ exports.viewEventPage = async (req, res) => {
   console.log(event, user, furniture, cake, photo)
 
   res.render('event-page', { event, user, furniture, cake, photo })
+}
+
+exports.updateProfile = async (req, res) => {
+  const { name, lastName } = req.body
+  const updatedUser = {
+    name,
+    lastName
+  }
+  await User.findByIdAndUpdate(req.user._id, updatedUser)
+  res.redirect('/profile')
 }
