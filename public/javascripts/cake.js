@@ -16,7 +16,7 @@ $(document).ready( () => {
      floors: document.getElementById('cakeFloors').value,
      description: document.getElementById('cakeDescription').value
    }
-    await cakesAPI.createOne(cake)
+    await cakesAPI.createOneCake(cake)
     console.log(cake)
   }
 })

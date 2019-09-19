@@ -12,12 +12,12 @@ $(document).ready( () => {
      typeOfTables: document.getElementById('TypeOfTables').value,
      mobiliaryStyle: document.getElementById('MobiliaryStyle').value,
      tableClothsAndChairs: document.getElementById('tableClothsAndChairs').value,
-     lace: document.getElementById('lace').value,
-     tent: document.getElementById('tent').value,
-     priceOfService: document.getElementById('furniturePriceOfService').value,
+     //lace: document.getElementById('lace').value,
+     //tent: document.getElementById('tent').value,
+     //priceOfService: document.getElementById('furniturePriceOfService').value,
      description: document.getElementById('furnitureDescription').value
    }
-    await furnituresAPI.createOne(furniture)
+    await furnituresAPI.createOneFurniture(furniture)
     console.log(furniture)
   }
 })

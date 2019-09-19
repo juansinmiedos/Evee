@@ -159,11 +159,11 @@
                     </div>
 
                     <label for="">Select location of event</label>
-                    <div class="form-group" >
+                    <div class="form-group" style="display: none">
                       <label for="">Longitude</label>
                       <input id="lng" class="form-control" type="text" name="lng" placeholder="Longitude" readonly />
                     </div>
-                    <div class="form-group" >
+                    <div class="form-group" style="display: none">
                       <label for="">Latitude</label>
                       <input id="lat" class="form-control" type="text" name="lat" placeholder="Latitude" readonly />
                     </div>
@@ -212,9 +212,7 @@
                   </div>
 
                   <div id="cakeSection" style="display: none">
-
                     <hr>
-
                     <h3>Cake</h3>
                     <form action="/create-cake" method="POST" id="cakeForm">
                       <!---->
@@ -278,7 +276,7 @@
                     <form action="/create-furniture" method="POST" id="furnitureForm">
                       <div class="form-group">
                         <label for="">Type of tables</label>
-                        <select name="typeOfTables" class="form-control" id="furnitureTypeOfTables">
+                        <select name="typeOfTables" class="form-control" id="TypeOfTables">
                           <option value="Triangular">Triangular</option>
                           <option value="Round">Round</option>
                           <option value="Rectangular">Rectangular</option>
@@ -290,7 +288,7 @@
 
                       <div class="form-group">
                         <label for="">Mobiliary Style</label>
-                        <select name="mobiliaryStyle" class="form-control" id="furnitureMobiliaryStyle">
+                        <select name="mobiliaryStyle" class="form-control" id="MobiliaryStyle">
                           <option value="Minimalist">Minimalist</option>
                           <option value="Wood">Wood</option>
                           <option value="Plastic">Plastic</option>
