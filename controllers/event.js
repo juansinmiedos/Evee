@@ -76,17 +76,28 @@ exports.viewEventPage = async (req, res) => {
   const cake = await Cake.find()
   const photo = await Photo.find()
 
-  console.log(event, user, furniture, cake, photo)
-
   res.render('event-page', { event, user, furniture, cake, photo })
 }
 
 exports.updateProfile = async (req, res) => {
   const { name, lastName } = req.body
+  const { _id } = req.user
   const updatedUser = {
     name,
     lastName
   }
-  await User.findByIdAndUpdate(req.user._id, updatedUser)
+  if (!req.file) {
+    await User.findByIdAndUpdate(_id, { name, lastName })
+  } else {
+    const { url: imgProfile } = req.file
+    await User.findByIdAndUpdate(_id, { updatedUser, imgProfile })
+  }
+
+  await User.findByIdAndUpdate(_id, updatedUser)
+  res.redirect('/profile')
+}
+
+exports.deleteEvent = async (req, res) => {
+  await Event.findByIdAndDelete(req.params.id)
   res.redirect('/profile')
 }

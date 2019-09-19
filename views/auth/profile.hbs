@@ -1,32 +1,32 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-  <a class="navbar-brand" href="#">Evee</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <a class="navbar-brand" href="#">Evee</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      {{#equal this.user.role "Supplier"}}
-      <li class="nav-item active">
-        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-      </li>
-      {{/equal}}
-      {{#unless this.user}}
-      <li class="nav-item active">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/signup">Signup</a>
-      </li>
-      {{/unless}}
-      <li class="nav-item active">
-        <a class="nav-link" href="/logout">Logout</a>
-      </li>
-    </ul>
-  </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        {{#equal this.user.role "Supplier"}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        {{/equal}}
+        {{#unless this.user}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/signup">Signup</a>
+        </li>
+        {{/unless}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
 </nav>
 
 
@@ -45,9 +45,11 @@
         <hr class="my-4">
         <p>We only ask you for the most basic information in order to help you, if you want to update the information
           you gave us, click the next button.</p>
-        <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#ModalProfile">Edit profile</a>
-<!--Modal for edit profile-->
-        <div class="modal fade" id="ModalProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#ModalProfile">Edit
+          profile</a>
+        <!--Modal for edit profile-->
+        <div class="modal fade" id="ModalProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+          aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -55,25 +57,25 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
-                  </div>
-                    <div class="modal-body">
-                      <form action="/profile" method="post">
-                        {{!-- <label for="">Profile picture:</label>
-                        <input type="file"  class="form-control" name="photo" id="">
-                        <hr> --}}
-                        <label for="">Email</label>
-                        <input type="text" class="form-control" name="" placeholder="{{this.user.email}}"  id="" readonly>
-                        <hr>
-                        <label for="">Name:</label>
-                        <input type="text" class="form-control" name="name" placeholder="{{this.user.name}}" id="">
-                        <hr>
-                        <label for="">Last name:</label>
-                        <input type="text"  class="form-control" name="lastName" placeholder="{{this.user.lastName}}" id="">
-                        <hr>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        </form>
-                    </div>
-                        <div class="modal-footer">
+              </div>
+              <div class="modal-body">
+                <form action="/profile" method="post" enctype="multipart/form-data">
+                  <label for="">Profile picture:</label>
+                  <input type="file" class="form-control" name="photo" id="photo">
+                  <hr>
+                  <label for="">Email</label>
+                  <input type="text" class="form-control" name="" placeholder="{{this.user.email}}" id="" readonly>
+                  <hr>
+                  <label for="">Name:</label>
+                  <input type="text" class="form-control" name="name" value="{{this.user.name}}" id="" required>
+                  <hr>
+                  <label for="">Last name:</label>
+                  <input type="text" class="form-control" name="lastName" value="{{this.user.lastName}}" id="" required>
+                  <hr>
+                  <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+              </div>
+              <div class="modal-footer">
               </div>
             </div>
           </div>
@@ -330,7 +332,7 @@
                       <div class="custom-file">
                         <input type="file" name="photosFurniture" value="Upload references" multiple>
                       </div>
-                      <input type="submit" name="" class="btn btn-primary" value="Send furniture request" >
+                      <input type="submit" name="" class="btn btn-primary" value="Send furniture request">
                     </form>
                   </div>
 
@@ -374,7 +376,8 @@
         </div>
       </div>
       <div class="card-deck">
-      {{#each this.events }}
+
+        {{#each this.events }}
         <div class="card">
           <img src="https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-stgeorge/a23cfc0b-d183-45c0-af92-e2ed53d2bffe"
             class="card-img-top" alt="...">
@@ -382,17 +385,18 @@
             <h5 class="card-title">{{this.nameOfEvent}}</h5>
             <small class="text-muted">Date of event</small>
             <p class="card-text">{{this.date}}</p>
-
             <small class="text-muted">Location</small>
             <p class="card-text">{{this.address}}</p>
-
             <small class="text-muted">Number of guests</small>
             <p class="card-text">{{this.numberOfGuests}} guests</p>
           </div>
           <div class="card-footer">
-            <div class="text-center">
+            <div class="text-center d-flex justify-content-around align-items-center">
               <button class="btn btn-primary">Go to event page</button>
-              <button class="btn btn-danger">Delete</button>
+              <form action="/profile/{{this._id}}" method="post">
+                <input class="btn btn-danger" type="submit" value="Delete event">
+              </form>
+              {{!-- <button class="btn btn-danger">Delete</button> --}}
             </div>
           </div>
         </div>
@@ -417,7 +421,7 @@
             </div>
           </div>
         </div> --}}
-         {{!-- <div class="card">
+        {{!-- <div class="card">
           <img src="https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-stgeorge/a23cfc0b-d183-45c0-af92-e2ed53d2bffe"
             class="card-img-top" alt="...">
           <div class="card-body">
@@ -438,7 +442,7 @@
             </div>
           </div>
         </div> --}}
-      {{/each}}
+        {{/each}}
       </div>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">

@@ -12,7 +12,8 @@ const {
   viewPhoto,
   viewCake,
   viewEventPage,
-  updateProfile
+  updateProfile,
+  deleteEvent
 } = require('../controllers/event')
 
 router.get('/create-event', viewEvent)
@@ -29,6 +30,8 @@ router.post('/create-furniture', uploadCloud.array('photosFurniture'), catchErro
 
 router.get('/event-page', viewEventPage)
 
-router.post('/profile', catchErrors(updateProfile))
+router.post('/profile', uploadCloud.single('photo'), catchErrors(updateProfile))
+
+router.post('/profile/:id', catchErrors(deleteEvent))
 
 module.exports = router
