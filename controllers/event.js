@@ -86,12 +86,17 @@ exports.viewEventPage = async (req, res) => {
 exports.updateProfile = async (req, res) => {
   const { name, lastName } = req.body
   const { _id } = req.user
-  const { url: imgProfile } = req.file
   const updatedUser = {
     name,
-    lastName,
-    imgProfile
+    lastName
   }
+  if (!req.file) {
+    await User.findByIdAndUpdate(_id, { name, lastName })
+  } else {
+    const { url: imgProfile } = req.file
+    await User.findByIdAndUpdate(_id, { updatedUser, imgProfile })
+  }
+
   await User.findByIdAndUpdate(_id, updatedUser)
   res.redirect('/profile')
 }

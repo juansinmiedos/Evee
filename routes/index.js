@@ -6,9 +6,12 @@ const isLoggedIn = require('../middlewares/isLoggedIn')
 const isLoggedOut = require('../middlewares/isLoggedOut')
 const checkRoles = require('../middlewares/checkRoles')
 const isAuth = require('../middlewares/isAuth')
+const User = require('../models/User')
 
 router.get('/', (req, res, next) => {
-  res.render('index')
+  if (User) {
+    res.redirect('/profile')
+  } else res.render('index')
 })
 
 router.get('/profile', isAuth, isLoggedIn('/login'), catchErrors(showProfile))
