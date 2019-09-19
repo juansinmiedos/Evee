@@ -9,7 +9,6 @@ exports.viewEvent = (req, res) => {
 
 exports.createEvent = async (req, res) => {
   const { nameOfEvent, numberOfGuests, date, description, address, lng, lat } = req.body
-  console.log(req.body)
   await Event.create({
     nameOfEvent,
     numberOfGuests,
@@ -21,36 +20,39 @@ exports.createEvent = async (req, res) => {
       coordinates: [lng, lat]
     }
   })
-  res.redirect('/create-event')
+  res.redirect('/profile')
 }
 
 exports.viewFurniture = (req, res) => {
   res.render('formWedding/create-furniture')
 }
 
-exports.createFurniture = async (req, res) => {
+exports.createFurniture = async (req, res, next) => {
   console.log(req.body)
-  const { typeOfTables, mobiliaryStyle, tableClothsAndChairs, tent } = req.body
+  const { typeOfTables, mobiliaryStyle, tableClothsAndChairs, tent, description } = req.body
   await Furniture.create({
     typeOfTables,
     mobiliaryStyle,
     tableClothsAndChairs,
-    tent
+    tent,
+    description
   })
-  res.redirect('/create-furniture')
+  res.redirect('/profile')
 }
 
-exports.viewPhoto = (req, res) => {
+exports.viewPhoto = (req, res, next) => {
   res.render('formWedding/create-photo')
 }
 
-exports.createPhoto = async (req, res) => {
-  const { typeOfAlbum, hoursOfService } = req.body
+exports.createPhoto = async (req, res, next) => {
+  const { typeOfAlbum, hoursOfService, description } = req.body
   await Photo.create({
     typeOfAlbum,
-    hoursOfService
+    hoursOfService,
+    description
   })
-  res.redirect('/create-photo')
+  next()
+  
 }
 
 exports.viewCake = (req, res) => {
@@ -58,15 +60,14 @@ exports.viewCake = (req, res) => {
 }
 
 exports.createCake = async (req, res) => {
-  const { name, flavor, term, filling, floors } = req.body
-  // const { url: imgCake } = req.file
+  const { name, flavor, term, filling, floors, description } = req.body
   await Cake.create({
     name,
     flavor,
     term,
     filling,
-    floors
-    // imgCake
+    floors,
+    description
   })
-  res.redirect('/create-cake')
+  res.redirect('/profile')
 }

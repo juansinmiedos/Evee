@@ -7,16 +7,6 @@ $("#seeAnotherFieldGroup").change(function() {
 });
 $("#seeAnotherFieldGroup").trigger("change");
 
-// $("#selectCake").change(function() {
-//   if ($(this).checked = true) {
-//     $('#cakeSection').show();
-//     console.log($(this))
-//   } else {
-//     $('#cakeSection').hide();
-//   }
-// });
-// $("#selectCake").trigger("change");
-
 function myCakeFunction() {
   const checkBox = document.getElementById("selectCake");
   const text = document.getElementById("cakeSection");
@@ -45,4 +35,22 @@ function myPhotoFunction() {
   } else {
      text.style.display = "none";
   }
+}
+
+// function myFurnitureForm() {
+//   const form = document.getElementById("furnitureForm");
+//   form.style.display = "none";
+// }
+
+// document.getElementById('mainForm').onsubmit = (e) => {
+//   e.preventDefault()
+//   const form = document.getElementById("mainSection");
+//   form.style.display = "none";
+// }
+
+
+document.getElementById('furnitureForm').onsubmit = (e) => {
+  e.preventDefault()
+  const form = document.getElementById("furnitureSection");
+  form.style.display = "none";
 }

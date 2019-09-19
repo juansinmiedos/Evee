@@ -120,17 +120,17 @@
 
                   <div class="form-check">
                     <input class="form-check-input position-static" type="checkbox" onclick="myCakeFunction()"
-                      id="selectCake" value="option1" aria-label="...">
+                      id="selectCake" value="selectCake" name="selectCake" aria-label="...">
                     <label for="">Cake</label>
                   </div>
                   <div class="form-check">
                     <input class="form-check-input position-static" type="checkbox" onclick="myFurnitureFunction()"
-                      id="selectFurniture" value="option1" aria-label="...">
+                      id="selectFurniture" value="selectFurniture" name="selectFurniture" aria-label="...">
                     <label for="">Furniture</label>
                   </div>
                   <div class="form-check">
                     <input class="form-check-input position-static" type="checkbox" onclick="myPhotoFunction()"
-                      id="selectPhoto" value="option1" aria-label="...">
+                      id="selectPhoto" value="selectPhoto" name="selectPhoto" aria-label="...">
                     <label for="">Photography</label>
                   </div>
 
@@ -192,7 +192,7 @@
                     <hr>
 
                     <h3>Cake</h3>
-                    <form action="" method="POST">
+                    <form action="/create-cake" method="POST">
                       <!---->
                       <div class="form-group">
                         <label for="">Type of cake</label>
@@ -239,8 +239,7 @@
     <input  type="file" name="imgCake">
   </div> --}}
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="validatedCustomFile">
-                        <label class="custom-file-label" for="validatedCustomFile">Upload desired furniture photos</label>
+                        <input type="file" name="photosCake" value="Upload references" multiple>
                       </div>
                       <input type="submit" class="btn btn-primary" name="" id="" value="Send cake request">
                     </form>
@@ -252,7 +251,7 @@
                     <hr>
 
                     <h3>Furniture</h3>
-                    <form action="/create-furniture" method="POST">
+                    <form action="/create-furniture" method="POST" id="furnitureForm">
                       <div class="form-group">
                         <label for="">Type of tables</label>
                         <select name="typeOfTables" class="form-control" id="">
@@ -307,10 +306,9 @@
                           placeholder="You can describe the place and the furniture requirements in detail here. You can add pictures below"></textarea>
                       </div>
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="validatedCustomFile">
-                        <label class="custom-file-label" for="validatedCustomFile">Upload desired furniture photos</label>
+                        <input type="file" name="photosFurniture" value="Upload references" multiple>
                       </div>
-                      <input type="submit" name="" class="btn btn-primary" value="Send furniture request" id="">
+                      <input type="submit" name="" class="btn btn-primary" value="Send furniture request" >
                     </form>
                   </div>
 
@@ -318,7 +316,7 @@
                     <hr>
 
                     <h3>Photography</h3>
-                    <form action="" method="POST">
+                    <form action="/create-photo" method="POST">
                       <div class="form-group">
                         <label for="">Type of album</label>
                         <select class="form-control" type="text" name="typeOfAlbum" id="">
@@ -337,8 +335,7 @@
                           placeholder="What type of photos do you want to have?"></textarea>
                       </div>
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="validatedCustomFile">
-                        <label class="custom-file-label" for="validatedCustomFile">Upload sample pictures</label>
+                        <input type="file" name="photosPhoto" value="Upload references" multiple>
                       </div>
                       <input type="submit" class="btn btn-primary" name="" id="" value="Send photo request">
                     </form>

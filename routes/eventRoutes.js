@@ -17,12 +17,12 @@ router.get('/create-event', viewEvent)
 router.post('/create-event', uploadCloud.single('photo'), catchErrors(createEvent))
 
 router.get('/create-cake', viewCake)
-router.post('/create-cake', createCake)
+router.post('/create-cake', uploadCloud.array('photosCake'), createCake)
 
 router.get('/create-photo', viewPhoto)
-router.post('/create-photo', createPhoto)
+router.post('/create-photo', uploadCloud.array('photosPhoto'), createPhoto)
 
 router.get('/create-furniture', viewFurniture)
-router.post('/create-furniture', uploadCloud.single('photo'), catchErrors(createFurniture))
+router.post('/create-furniture', uploadCloud.array('photosFurniture'), catchErrors(createFurniture))
 
 module.exports = router

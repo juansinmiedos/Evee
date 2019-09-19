@@ -14,6 +14,9 @@ const eventSchema = new Schema(
       },
       coordinates: [Number]
     },
+    selectCake: Boolean,
+    selectFurniture: Boolean,
+    selectPhoto: Boolean,
     imgEvent: {
       type: String,
       default:
