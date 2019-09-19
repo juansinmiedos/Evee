@@ -8,7 +8,7 @@ exports.viewEvent = (req, res) => {
   res.render('formWedding/create-event')
 }
 
-exports.createEvent = async (req, res) => {
+exports.createEvent = async (req, res, next) => {
   const { nameOfEvent, numberOfGuests, date, description, address, lng, lat } = req.body
   await Event.create({
     nameOfEvent,
@@ -21,7 +21,7 @@ exports.createEvent = async (req, res) => {
       coordinates: [lng, lat]
     }
   })
-  res.redirect('/profile')
+  next()
 }
 
 exports.viewFurniture = (req, res) => {
@@ -29,7 +29,6 @@ exports.viewFurniture = (req, res) => {
 }
 
 exports.createFurniture = async (req, res, next) => {
-  console.log(req.body)
   const { typeOfTables, mobiliaryStyle, tableClothsAndChairs, tent, description } = req.body
   await Furniture.create({
     typeOfTables,
@@ -38,7 +37,7 @@ exports.createFurniture = async (req, res, next) => {
     tent,
     description
   })
-  res.redirect('/profile')
+  next()
 }
 
 exports.viewPhoto = (req, res, next) => {
@@ -59,7 +58,7 @@ exports.viewCake = (req, res) => {
   res.render('formWedding/create-cake')
 }
 
-exports.createCake = async (req, res) => {
+exports.createCake = async (req, res, next) => {
   const { name, flavor, term, filling, floors, description } = req.body
   await Cake.create({
     name,
@@ -69,7 +68,7 @@ exports.createCake = async (req, res) => {
     floors,
     description
   })
-  res.redirect('/profile')
+  next()
 }
 
 //Traemos la información de todos los modelos
