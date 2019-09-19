@@ -9,6 +9,8 @@ $(document).ready( () => {
     form.style.display = "none";
 
    const cake = {
+     idEvent: document.getElementById('cakeIdEvent').value,
+     limitPrice: document.getElementById('cakeLimitPrice').value,
      name: document.getElementById('cakeName').value,
      flavor: document.getElementById('cakeFlavor').value,
      term: document.getElementById('cakeTerm').value,

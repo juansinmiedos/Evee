@@ -5,25 +5,25 @@ class APIHandler {
 
   createOne = eventData => {
     axios.post(`${this.BASE_URL}/create-event`, eventData)
-    .then(console.log('yess event'))
+    .then(console.log('work'))
     .catch(err => console.log(err));
   }
 
   createOneCake = cakeData => {
     axios.post(`${this.BASE_URL}/create-cake`, cakeData)
-    .then(console.log('yess cake'))
+    .then(console.log('work'))
     .catch(err => console.log(err));
   }
 
   createOneFurniture = furnitureData => {
     axios.post(`${this.BASE_URL}/create-furniture`, furnitureData)
-    .then(console.log('this works furnitura'))
+    .then(console.log('work'))
     .catch(err => console.log(err));
   }
 
   createOnePhoto = photoData => {
     axios.post(`${this.BASE_URL}/create-photo`, photoData)
-    .then(console.log('this works photiño'))
+    .then(console.log('work'))
     .catch(err => console.log(err));
   }
 }

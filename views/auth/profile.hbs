@@ -217,6 +217,11 @@
                     <hr>
                     <h3>Cake</h3>
                     <form action="/create-cake" method="POST" id="cakeForm">
+                      <!-- THIS SHOULD ALWAYS BE HIDDEN -->
+                      <div class="form-group">
+                        <label for="">Id Event</label>
+                        <input type="text" class="form-control" name="idEvent" id="cakeIdEvent">
+                      </div>
                       <!---->
                       <div class="form-group">
                         <label for="">Type of cake</label>
@@ -258,6 +263,12 @@
                           placeholder="Feel free to describe the perfect cake that the couple is looking and upload pictures below."></textarea>
                       </div>
                       <!---->
+                      <div class="form-group">
+                        <label for="">Max Budget</label>
+                        <input type="number" class="form-control" name="limitPrice" id="cakeLimitPrice"
+                          placeholder="What's your budget for this?">
+                      </div>
+                      <!---->
                       {{!-- <div class="form-group">
     <label for="">Upload an Image!</label><br>
     <input  type="file" name="imgCake">
@@ -276,6 +287,11 @@
 
                     <h3>Furniture</h3>
                     <form action="/create-furniture" method="POST" id="furnitureForm">
+                    <!-- THIS SHOULD ALWAYS BE HIDDEN -->
+                      <div class="form-group">
+                        <label for="">Id Event</label>
+                        <input type="text" class="form-control" name="idEvent" id="furnitureIdEvent">
+                      </div>
                       <div class="form-group">
                         <label for="">Type of tables</label>
                         <select name="typeOfTables" class="form-control" id="TypeOfTables">
@@ -314,7 +330,7 @@
                           </div>
                           <div class="col">
                             <label for="">&nbsp;</label>
-                            <input type="text" name="color" id="" placeholder="Colors" class="form-control">
+                            <input type="text" name="color" id="color" placeholder="Colors" class="form-control">
                           </div>
                         </div>
                       </div>
@@ -329,6 +345,11 @@
                         <textarea name="description" id="furnitureDescription" class="form-control" cols="50" rows="4"
                           placeholder="You can describe the place and the furniture requirements in detail here. You can add pictures below"></textarea>
                       </div>
+                      <div class="form-group">
+                        <label for="">Max Budget</label>
+                        <input type="number" class="form-control" name="limitPrice" id="furnitureLimitPrice"
+                          placeholder="What's your budget for this?">
+                      </div>
                       <div class="custom-file">
                         <input type="file" name="photosFurniture" value="Upload references" multiple>
                       </div>
@@ -341,6 +362,11 @@
 
                     <h3>Photography</h3>
                     <form action="/create-photo" method="POST" id="photoForm">
+                    <!-- THIS SHOULD ALWAYS BE HIDDEN -->
+                      <div class="form-group">
+                        <label for="">Id Event</label>
+                        <input type="text" class="form-control" name="idEvent" id="photoIdEvent">
+                      </div>
                       <div class="form-group">
                         <label for="">Type of album</label>
                         <select class="form-control" type="text" name="typeOfAlbum" id="typeOfAlbum">
@@ -357,6 +383,11 @@
                         <label for="">Description</label><br>
                         <textarea name="description" id="photoDescription" class="form-control" cols="50" rows="4"
                           placeholder="What type of photos do you want to have?"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="">Max Budget</label>
+                        <input type="number" class="form-control" name="limitPrice" id="photoLimitPrice"
+                          placeholder="What's your budget for this?">
                       </div>
                       <div class="custom-file">
                         <input type="file" name="photosPhoto" value="Upload references" multiple>
