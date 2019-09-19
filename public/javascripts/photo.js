@@ -11,10 +11,10 @@ $(document).ready( () => {
    const photo = {
      typeOfAlbum: document.getElementById('typeOfAlbum').value,
      hoursOfService: document.getElementById('hoursOfService').value,
-     priceOfService: document.getElementById('photoPriceOfService').value,
+     //priceOfService: document.getElementById('photoPriceOfService').value,
      description: document.getElementById('photoDescription').value
    }
-    await photosAPI.createOne(photo)
+    await photosAPI.createOnePhoto(photo)
     console.log(photo)
   }
 })

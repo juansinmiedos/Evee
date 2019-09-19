@@ -14,13 +14,9 @@ exports.createEvent = async (req, res, next) => {
     numberOfGuests,
     date,
     description,
-    address,
-    location: {
-      type: 'Point',
-      coordinates: [lng, lat]
-    }
+    address
   })
-  next()
+  res.render('auth/profile')
 }
 
 exports.viewFurniture = (req, res) => {
@@ -36,7 +32,7 @@ exports.createFurniture = async (req, res, next) => {
     tent,
     description
   })
-  next()
+  res.render('auth/profile')
 }
 
 exports.viewPhoto = (req, res, next) => {
@@ -50,8 +46,7 @@ exports.createPhoto = async (req, res, next) => {
     hoursOfService,
     description
   })
-  next()
-  
+  res.render('auth/profile')
 }
 
 exports.viewCake = (req, res) => {
@@ -68,5 +63,5 @@ exports.createCake = async (req, res, next) => {
     floors,
     description
   })
-  next()
+  res.render('auth/profile')
 }
