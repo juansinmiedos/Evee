@@ -49,8 +49,8 @@ function myPhotoFunction() {
 // }
 
 
-document.getElementById('furnitureForm').onsubmit = (e) => {
-  e.preventDefault()
-  const form = document.getElementById("furnitureSection");
-  form.style.display = "none";
-}
+// document.getElementById('furnitureForm').onsubmit = (e) => {
+//   e.preventDefault()
+//   const form = document.getElementById("furnitureSection");
+//   form.style.display = "none";
+// }

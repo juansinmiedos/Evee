@@ -1,0 +1,22 @@
+const cakesAPI = new APIHandler("http://localhost:3000")
+
+$(document).ready( () => {
+  
+  document.getElementById('cakeForm').onsubmit = async (e) =>{
+    e.preventDefault()
+
+    const form = document.getElementById("cakeSection");
+    form.style.display = "none";
+
+   const cake = {
+     name: document.getElementById('cakeName').value,
+     flavor: document.getElementById('cakeFlavor').value,
+     term: document.getElementById('cakeTerm').value,
+     filling: document.getElementById('cakeFilling').value,
+     floors: document.getElementById('cakeFloors').value,
+     description: document.getElementById('cakeDescription').value
+   }
+    await cakesAPI.createOne(cake)
+    console.log(cake)
+  }
+})

@@ -89,132 +89,124 @@
               </div>
               <div class="modal-body">
                 <div class="container">
-                  <!--Creating the form -->
-                  <form action="/create-event" method="POST" />
-                  <div class="form-group">
-                    <label for="">Name of the event</label>
-                    <input type="text" name="nameOfEvent" class="form-control" id="formGroupExampleInput"
-                      placeholder="Who is getting married? (ex. Julian & Luisa)" required>
+                  <div id="mainSection">
+
+                    <!--Creating the form -->
+                    <form action="/create-event" method="POST" id="eventForm" />
+                    <div class="form-group">
+                      <label for="">Name of the event</label>
+                      <input type="text" name="nameOfEvent" class="form-control" id="nameOfEvent"
+                        placeholder="Who is getting married? (ex. Julian & Luisa)" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="">Number of guests</label>
+                      <input type="number" name="numberOfGuests" class="form-control" id="numberOfGuests"
+                        placeholder="Who many guests are there?" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="">Date of event</label>
+                      <input type="date" name="date" class="form-control" id="date" required>
+                    </div>
+
+                    <label>Select the services that you need</label>
+
+                    <div class="form-check">
+                      <input class="form-check-input position-static" type="checkbox" onclick="myCakeFunction()"
+                        id="selectCake" value="selectCake" name="selectCake" aria-label="...">
+                      <label for="">Cake</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input position-static" type="checkbox" onclick="myFurnitureFunction()"
+                        id="selectFurniture" value="selectFurniture" name="selectFurniture" aria-label="...">
+                      <label for="">Furniture</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input position-static" type="checkbox" onclick="myPhotoFunction()"
+                        id="selectPhoto" value="selectPhoto" name="selectPhoto" aria-label="...">
+                      <label for="">Photography</label>
+                    </div>
+
+                    <label for="">Select location of event</label>
+                    <div class="form-group" >
+                      <label for="">Longitude</label>
+                      <input id="lng" class="form-control" type="text" name="lng" placeholder="Longitude" readonly />
+                    </div>
+                    <div class="form-group" >
+                      <label for="">Latitude</label>
+                      <input id="lat" class="form-control" type="text" name="lat" placeholder="Latitude" readonly />
+                    </div>
+
+                    <div>
+                      <div id="search"></div>
+                      <div id='map' style='display: inline-flex;width: 100%; height: 300px;'></div>
+                    </div>
+                    <div class="form-group">
+                      <input id="address" name="address" class="form-control" name="address" type="text"
+                        placeholder="Address" readonly />
+                    </div>
+                    <!--Drawing the map -->
+                    <script>
+                      let input_lng = document.getElementById("lng");
+                      let input_lat = document.getElementById("lat");
+                      let input_address = document.getElementById("address")
+                      mapboxgl.accessToken =
+                        "pk.eyJ1IjoibWx6eiIsImEiOiJjanUwbTRtaTQxc3RzNDRtZmdtaXF1dXVxIn0.k3hMbEeCzUKaDn2sIsULjA";
+
+                      let map = new mapboxgl.Map({ container: "map", style: "mapbox://styles/mapbox/streets-v11", center: [-99.1332049, 19.4326018], zoom: 11 });
+
+                      let geocoder = new MapboxGeocoder({
+                        accessToken: mapboxgl.accessToken,
+                      });
+
+                      map.addControl(geocoder)
+
+                      geocoder.on("result", res => {
+                        let [lng, lat] = res.result.center;
+                        let address = res.result.place_name;
+                        input_lng.value = lng;
+                        input_lat.value = lat;
+                        input_address.value = address;
+                      });
+
+                      //map.addControl(new mapboxgl.NavigationControl());
+                    </script>
+                    <div class="form-group">
+                      <label for="">Description</label><br>
+                      <textarea name="description" id="description" class="form-control" cols="50" rows="4"
+                        placeholder="Give a complete description of the event so the supplier know if they can help you with your requirements"></textarea>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Submit Requirement" name="" id="">
+                    </form>
                   </div>
-                  <div class="form-group">
-                    <label for="">Number of guests</label>
-                    <input type="number" name="numberOfGuests" class="form-control" id=""
-                      placeholder="Who many guests are there?" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="">Date of event</label>
-                    <input type="date" name="date" class="form-control" id="formGroupExampleInput2" required>
-                  </div>
-
-
-                  <label>Select the services that you need</label>
-
-                  {{!-- <div class="form-group">
-                    <label for="role">Role:</label>
-                    <select id="selectCake" type="text" name="role" placeholder="anna.kerr@evee.com"
-                      class="form-control">
-                      <option value="Wedding">Wedding Planner</option>
-                      <option value="Supplier">Supplier</option>
-                    </select>
-                  </div> --}}
-
-                  <div class="form-check">
-                    <input class="form-check-input position-static" type="checkbox" onclick="myCakeFunction()"
-                      id="selectCake" value="selectCake" name="selectCake" aria-label="...">
-                    <label for="">Cake</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input position-static" type="checkbox" onclick="myFurnitureFunction()"
-                      id="selectFurniture" value="selectFurniture" name="selectFurniture" aria-label="...">
-                    <label for="">Furniture</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input position-static" type="checkbox" onclick="myPhotoFunction()"
-                      id="selectPhoto" value="selectPhoto" name="selectPhoto" aria-label="...">
-                    <label for="">Photography</label>
-                  </div>
-
-
-                  <label for="">Select location of event</label>
-                  <div class="form-group" style="display: none">
-                    <label for="">Longitude</label>
-                    <input id="lng" class="form-control" type="text" name="lng" placeholder="Longitude" readonly />
-                  </div>
-                  <div class="form-group" style="display: none">
-                    <label for="">Latitude</label>
-                    <input id="lat" class="form-control" type="text" name="lat" placeholder="Latitude" readonly />
-                  </div>
-
-                  <div>
-                    <div id="search"></div>
-                    <div id='map' style='display: inline-flex;width: 100%; height: 300px;'></div>
-                  </div>
-                  <div class="form-group">
-                    <input id="address" name="address" class="form-control" name="address" type="text"
-                      placeholder="Address" readonly />
-                  </div>
-                  <!--Drawing the map -->
-                  <script>
-                    let input_lng = document.getElementById("lng");
-                    let input_lat = document.getElementById("lat");
-                    let input_address = document.getElementById("address")
-                    mapboxgl.accessToken =
-                      "pk.eyJ1IjoibWx6eiIsImEiOiJjanUwbTRtaTQxc3RzNDRtZmdtaXF1dXVxIn0.k3hMbEeCzUKaDn2sIsULjA";
-
-                    let map = new mapboxgl.Map({ container: "map", style: "mapbox://styles/mapbox/streets-v11", center: [-99.1332049, 19.4326018], zoom: 11 });
-
-                    let geocoder = new MapboxGeocoder({
-                      accessToken: mapboxgl.accessToken,
-                    });
-
-                    map.addControl(geocoder)
-
-                    geocoder.on("result", res => {
-                      let [lng, lat] = res.result.center;
-                      let address = res.result.place_name;
-                      input_lng.value = lng;
-                      input_lat.value = lat;
-                      input_address.value = address;
-                    });
-
-                    //map.addControl(new mapboxgl.NavigationControl());
-                  </script>
-                  <div class="form-group">
-                    <label for="">Description</label><br>
-                    <textarea name="description" id="" class="form-control" cols="50" rows="4"
-                      placeholder="Give a complete description of the event so the supplier know if they can help you with your requirements"></textarea>
-                  </div>
-                  <input type="submit" class="btn btn-primary" value="Submit Requirement" name="" id="">
-                  </form>
 
                   <div id="cakeSection" style="display: none">
 
                     <hr>
 
                     <h3>Cake</h3>
-                    <form action="/create-cake" method="POST">
+                    <form action="/create-cake" method="POST" id="cakeForm">
                       <!---->
                       <div class="form-group">
                         <label for="">Type of cake</label>
-                        <input type="text" class="form-control" name="name" id=""
+                        <input type="text" class="form-control" name="name" id="cakeName"
                           placeholder="What type of cake do you need? ex. Butter cake">
                       </div>
                       <!---->
                       <div class="form-group">
                         <label for="">Flavor</label>
-                        <input type="text" class="form-control" name="flavor" id=""
+                        <input type="text" class="form-control" name="flavor" id="cakeFlavor"
                           placeholder="Whats the main flavor the bread should have? ex. Vanilla">
                       </div>
                       <!---->
                       <div class="form-group">
                         <label for="">Filling</label>
-                        <input type="text" class="form-control" name="filling" id=""
+                        <input type="text" class="form-control" name="filling" id="cakeFilling"
                           placeholder="What aditional texture and flavor do you require? Ex. Strawberries and champagne cream">
                       </div>
                       <!---->
                       <div class="form-group">
                         <label for="">Type of cover</label>
-                        <select class="form-control" name="term" id="">
+                        <select class="form-control" name="term" id="cakeTerm">
                           <option value="Glazed">Glazed</option>
                           <option value="Fondant">Fondant</option>
                           <option value="Meringue">Meringue</option>
@@ -225,12 +217,12 @@
                       <!---->
                       <div class="form-group">
                         <label for="">Floors</label>
-                        <input type="number" class="form-control" name="floors" id="">
+                        <input type="number" class="form-control" name="floors" id="cakeFloors">
                       </div>
                       <!-- -->
                       <div class="form-group">
                         <label for="">Description</label><br>
-                        <textarea name="description" id="" class="form-control" cols="50" rows="4"
+                        <textarea name="description" id="cakeDescription" class="form-control" cols="50" rows="4"
                           placeholder="Feel free to describe the perfect cake that the couple is looking and upload pictures below."></textarea>
                       </div>
                       <!---->
@@ -254,7 +246,7 @@
                     <form action="/create-furniture" method="POST" id="furnitureForm">
                       <div class="form-group">
                         <label for="">Type of tables</label>
-                        <select name="typeOfTables" class="form-control" id="">
+                        <select name="typeOfTables" class="form-control" id="furnitureTypeOfTables">
                           <option value="Triangular">Triangular</option>
                           <option value="Round">Round</option>
                           <option value="Rectangular">Rectangular</option>
@@ -266,7 +258,7 @@
 
                       <div class="form-group">
                         <label for="">Mobiliary Style</label>
-                        <select name="mobiliaryStyle" class="form-control" id="">
+                        <select name="mobiliaryStyle" class="form-control" id="furnitureMobiliaryStyle">
                           <option value="Minimalist">Minimalist</option>
                           <option value="Wood">Wood</option>
                           <option value="Plastic">Plastic</option>
@@ -279,7 +271,7 @@
                         <div class="row">
                           <div class="col">
                             <label for="">Table cloth and chairs</label>
-                            <select name="tableClothsAndChairs" class="form-control" id="">
+                            <select name="tableClothsAndChairs" class="form-control" id="tableClothsAndChairs">
                               <option value="Silk">Silk</option>
                               <option value="Cotton">Cotton</option>
                               <option value="Poliester">Poliester</option>
@@ -297,12 +289,12 @@
 
                       <div class="form-group">
                         <label for="">Do you require tent?</label>
-                        <input type="checkbox" name="tent">
+                        <input type="checkbox" name="tent" id="tent">
                       </div>
 
                       <div class="form-group">
                         <label for="">Description</label><br>
-                        <textarea name="description" id="" class="form-control" cols="50" rows="4"
+                        <textarea name="description" id="furnitureDescription" class="form-control" cols="50" rows="4"
                           placeholder="You can describe the place and the furniture requirements in detail here. You can add pictures below"></textarea>
                       </div>
                       <div class="custom-file">
@@ -316,10 +308,10 @@
                     <hr>
 
                     <h3>Photography</h3>
-                    <form action="/create-photo" method="POST">
+                    <form action="/create-photo" method="POST" id="photoForm">
                       <div class="form-group">
                         <label for="">Type of album</label>
-                        <select class="form-control" type="text" name="typeOfAlbum" id="">
+                        <select class="form-control" type="text" name="typeOfAlbum" id="typeOfAlbum">
                           <option value="Photo Album">Photo Album</option>
                           <option value="Video Album">Video Album</option>
                           <option value="Both">Both</option>
@@ -327,11 +319,11 @@
                       </div>
                       <div class="form-group">
                         <label for="">Hours of service</label>
-                        <input type="number" class="form-control" name="hoursOfService" id="">
+                        <input type="number" class="form-control" name="hoursOfService" id="hoursOfService">
                       </div>
                       <div class="form-group">
                         <label for="">Description</label><br>
-                        <textarea name="description" id="" class="form-control" cols="50" rows="4"
+                        <textarea name="description" id="photoDescription" class="form-control" cols="50" rows="4"
                           placeholder="What type of photos do you want to have?"></textarea>
                       </div>
                       <div class="custom-file">

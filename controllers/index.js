@@ -109,27 +109,12 @@ exports.toLogOut = (req, res) => {
 exports.showProfile = async (req, res) => {
   const user = await User.findById(req.user._id)
   const events = await Event.find()
-  console.log(events)
-  console.log(user)
+  
   res.render('auth/profile', { user, events })
-  // res.render('auth/profile', events)
 }
-
-// exports.showEvents = async (req, res) => {
-//   const events = await Event.find()
-//   console.log(events)
-//   res.render('auth/profile', { events })
-// }
 
 exports.showHome = async (req, res) => {
   const user = await User.findById(req.user._id)
 
   res.render('home', user)
 }
-
-// exports.confirmation = (req, res) => {
-//   User.find({ _id: req.params._id })
-//   .then(user => {
-//     let id = user[0]._id
-//   })
-// }
