@@ -2,6 +2,8 @@ const { Schema, model } = require('mongoose')
 
 const cakeSchema = new Schema(
   {
+    idEvent: String,
+    limitPrice: Number,
     name: String,
     flavor: String,
     term: {
@@ -10,7 +12,8 @@ const cakeSchema = new Schema(
     },
     filling: String,
     floors: Number,
-    description: String
+    description: String,
+    weddingPhotos: [String]
   },
   { timestamps: true }
 )

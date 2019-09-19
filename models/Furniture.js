@@ -2,6 +2,8 @@ const { model, Schema } = require('mongoose')
 
 const furnitureSchema = new Schema(
   {
+    idEvent: String,
+    limitPrice: Number,
     typeOfTables: {
       type: String,
       enum: ['Triangular', 'Round', 'Rectangular', 'Hexagonal', 'Square', 'Other'],
@@ -17,10 +19,10 @@ const furnitureSchema = new Schema(
       enum: ['Silk', 'Cotton', 'Poliester', 'Linen', 'Mixed', 'Other'],
       default: 'Other'
     },
-    lace: Boolean,
+    color: String,
     tent: String,
-    priceOfService: Number,
-    description: String
+    description: String,
+    weddingPhotos: [String]
   },
   { timestamps: true }
 )

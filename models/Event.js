@@ -14,14 +14,9 @@ const eventSchema = new Schema(
       },
       coordinates: [Number]
     },
-    selectCake: Boolean,
-    selectFurniture: Boolean,
-    selectPhoto: Boolean,
-    imgEvent: {
-      type: String,
-      default:
-        'https://thumbs.dreamstime.com/z/wedding-couple-icons-cartoon-style-vector-illustration-cute-flat-isolated-background-happy-64944082.jpg'
-    }
+    selectCake: String,
+    selectFurniture: String,
+    selectPhoto: String
   },
   { timestamps: true }
 )
