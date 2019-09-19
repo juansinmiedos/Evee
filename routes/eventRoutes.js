@@ -29,6 +29,6 @@ router.post('/create-furniture', uploadCloud.array('photosFurniture'), catchErro
 
 router.get('/event-page', viewEventPage)
 
-router.post('/profile', catchErrors(updateProfile))
+router.post('/profile', uploadCloud.single('photo'), catchErrors(updateProfile))
 
 module.exports = router

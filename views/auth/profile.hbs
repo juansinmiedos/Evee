@@ -57,18 +57,18 @@
                 </button>
                   </div>
                     <div class="modal-body">
-                      <form action="/profile" method="post">
-                        {{!-- <label for="">Profile picture:</label>
+                      <form action="/profile" method="post" enctype="multipart/form-data">
+                        <label for="">Profile picture:</label>
                         <input type="file"  class="form-control" name="photo" id="">
-                        <hr> --}}
+                        <hr>
                         <label for="">Email</label>
                         <input type="text" class="form-control" name="" placeholder="{{this.user.email}}"  id="" readonly>
                         <hr>
                         <label for="">Name:</label>
-                        <input type="text" class="form-control" name="name" placeholder="{{this.user.name}}" id="">
+                        <input type="text" class="form-control" name="name" value="{{this.user.name}}" id="">
                         <hr>
                         <label for="">Last name:</label>
-                        <input type="text"  class="form-control" name="lastName" placeholder="{{this.user.lastName}}" id="">
+                        <input type="text"  class="form-control" name="lastName" value="{{this.user.lastName}}" id="">
                         <hr>
                         <button type="submit" class="btn btn-primary">Save</button>
                         </form>

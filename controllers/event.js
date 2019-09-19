@@ -29,7 +29,6 @@ exports.viewFurniture = (req, res) => {
 }
 
 exports.createFurniture = async (req, res, next) => {
-  console.log(req.body)
   const { typeOfTables, mobiliaryStyle, tableClothsAndChairs, tent, description } = req.body
   await Furniture.create({
     typeOfTables,
@@ -81,17 +80,18 @@ exports.viewEventPage = async (req, res) => {
   const cake = await Cake.find()
   const photo = await Photo.find()
 
-  console.log(event, user, furniture, cake, photo)
-
   res.render('event-page', { event, user, furniture, cake, photo })
 }
 
 exports.updateProfile = async (req, res) => {
   const { name, lastName } = req.body
+  const { _id } = req.user
+  const { url: imgProfile } = req.file
   const updatedUser = {
     name,
-    lastName
+    lastName,
+    imgProfile
   }
-  await User.findByIdAndUpdate(req.user._id, updatedUser)
+  await User.findByIdAndUpdate(_id, updatedUser)
   res.redirect('/profile')
 }
