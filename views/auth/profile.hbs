@@ -282,7 +282,7 @@
 
                     <h3>Furniture</h3>
                     <form action="/create-furniture" method="POST" id="furnitureForm">
-                    <!-- THIS SHOULD ALWAYS BE HIDDEN -->
+                      <!-- THIS SHOULD ALWAYS BE HIDDEN -->
                       <div class="form-group">
                         <label for="">Event</label>
                         <input type="text" class="form-control" name="idEvent" id="furnitureIdEvent" readonly>
@@ -344,8 +344,8 @@
                         <label for="">Max Budget</label>
                         <input type="number" class="form-control" name="limitPrice" id="furnitureLimitPrice"
                           placeholder="What's your budget for this?">
-                      {{!-- </div>
-                      <div class="custom-file">
+                      </div>
+                      {{!-- <div class="custom-file">
                         <input type="file" name="photosFurniture" value="Upload references" multiple>
                       </div> --}}
                       <input type="submit" name="" class="btn btn-primary" value="Send furniture request">
@@ -357,7 +357,7 @@
 
                     <h3>Photography</h3>
                     <form action="/create-photo" method="POST" id="photoForm">
-                    <!-- THIS SHOULD ALWAYS BE HIDDEN -->
+                      <!-- THIS SHOULD ALWAYS BE HIDDEN -->
                       <div class="form-group">
                         <label for="">Event</label>
                         <input type="text" class="form-control" name="idEvent" id="photoIdEvent" readonly>
@@ -394,81 +394,43 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" onClick="window.location.reload();">Save changes</button>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="card-deck">
-
-        {{#each this.events }}
-        <div class="card">
-          <img src="https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-stgeorge/a23cfc0b-d183-45c0-af92-e2ed53d2bffe"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{this.nameOfEvent}}</h5>
-            <small class="text-muted">Date of event</small>
-            <p class="card-text">{{this.date}}</p>
-            <small class="text-muted">Location</small>
-            <p class="card-text">{{this.address}}</p>
-            <small class="text-muted">Number of guests</small>
-            <p class="card-text">{{this.numberOfGuests}} guests</p>
-          </div>
-          <div class="card-footer">
-            <div class="text-center d-flex justify-content-around align-items-center">
-              <button class="btn btn-primary">Go to event page</button>
-              <form action="/profile/{{this._id}}" method="post">
-                <input class="btn btn-danger" type="submit" value="Delete event">
-              </form>
-              {{!-- <button class="btn btn-danger">Delete</button> --}}
+        <div class="row">
+          {{#each this.events }}
+          <div class="col col-6 p-3">
+            <div class="card">
+              <img
+                src="https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-stgeorge/a23cfc0b-d183-45c0-af92-e2ed53d2bffe"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{this.nameOfEvent}}</h5>
+                <small class="text-muted">Date of event</small>
+                <p class="card-text">{{this.date}}</p>
+                <small class="text-muted">Location</small>
+                <p class="card-text">{{this.address}}</p>
+                <small class="text-muted">Number of guests</small>
+                <p class="card-text">{{this.numberOfGuests}} guests</p>
+              </div>
+              <div class="card-footer">
+                <div class="text-center d-flex justify-content-around align-items-center">
+                  <button class="btn btn-primary">Go to event page</button>
+                  <form action="/profile/{{this._id}}" method="post" id="{{this._id}}">
+                    <input class="btn btn-danger" type="submit" value="Delete event">
+                  </form>
+                  {{!-- <button class="btn btn-danger">Delete</button> --}}
+                </div>
+              </div>
             </div>
           </div>
+
+          {{/each}}
         </div>
-        {{!-- <div class="card">
-          <img src="https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-stgeorge/a23cfc0b-d183-45c0-af92-e2ed53d2bffe"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Name of event</h5>
-            <small class="text-muted">Date of event</small>
-            <p class="card-text">Feb 11th 2020</p>
-
-            <small class="text-muted">Location</small>
-            <p class="card-text">Tonalá 10, Roma Norte, Cuauhtémoc, CDMX</p>
-
-            <small class="text-muted">Number of guests</small>
-            <p class="card-text">300 people</p>
-          </div>
-          <div class="card-footer">
-            <div class="text-center">
-              <button class="btn btn-primary">Go to event page</button>
-              <button class="btn btn-danger">Delete</button>
-            </div>
-          </div>
-        </div> --}}
-        {{!-- <div class="card">
-          <img src="https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-stgeorge/a23cfc0b-d183-45c0-af92-e2ed53d2bffe"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Name of event</h5>
-            <small class="text-muted">Date of event:</small>
-            <p class="card-text">Feb 11th 2020</p>
-
-            <small class="text-muted">Location</small>
-            <p class="card-text">Tonalá 10, Roma Norte, Cuauhtémoc, CDMX</p>
-
-            <small class="text-muted">Number of guests</small>
-            <p class="card-text">300 people</p>
-          </div>
-          <div class="card-footer">
-            <div class="text-center">
-              <button class="btn btn-primary">Go to event page</button>
-              <button class="btn btn-danger">Delete</button>
-            </div>
-          </div>
-        </div> --}}
-        {{/each}}
       </div>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
