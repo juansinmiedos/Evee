@@ -22,7 +22,6 @@ const furnitureSchema = new Schema(
     color: String,
     tent: String,
     description: String,
-    //weddingPhotos: [String]
   },
   { timestamps: true }
 )

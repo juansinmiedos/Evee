@@ -3,7 +3,10 @@ require('dotenv').config()
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const express = require('express')
+<<<<<<< HEAD
 // const favicon = require('serve-favicon')
+=======
+>>>>>>> dev
 const hbs = require('hbs')
 const mongoose = require('mongoose')
 const logger = require('morgan')
@@ -68,7 +71,10 @@ app.use(
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
 app.use(express.static(path.join(__dirname, 'public')))
+<<<<<<< HEAD
 // app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
+=======
+>>>>>>> dev
 
 hbs.registerHelper('ifUndefined', (value, options) => {
   if (arguments.length < 2) throw new Error('Handlebars Helper ifUndefined needs 1 parameter')

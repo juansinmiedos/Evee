@@ -36,21 +36,3 @@ function myPhotoFunction() {
      text.style.display = "none";
   }
 }
-
-// function myFurnitureForm() {
-//   const form = document.getElementById("furnitureForm");
-//   form.style.display = "none";
-// }
-
-// document.getElementById('mainForm').onsubmit = (e) => {
-//   e.preventDefault()
-//   const form = document.getElementById("mainSection");
-//   form.style.display = "none";
-// }
-
-
-// document.getElementById('furnitureForm').onsubmit = (e) => {
-//   e.preventDefault()
-//   const form = document.getElementById("furnitureSection");
-//   form.style.display = "none";
-// }

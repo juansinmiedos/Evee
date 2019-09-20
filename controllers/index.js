@@ -87,7 +87,7 @@ exports.toSignup = async (req, res) => {
   })
 }
 
-exports.confirmation = (req, res) => {
+exports.confirmation = (req, res, next) => {
   User.find({ confirmationCode: req.params.confirmationCode }).then(user => {
     let id = user[0]._id
 
