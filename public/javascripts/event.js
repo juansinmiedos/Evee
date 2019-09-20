@@ -1,4 +1,4 @@
-const eventsAPI = new APIHandler("http://localhost:3000")
+const eventsAPI = new APIHandler("https://aqueous-ocean-73744.herokuapp.com")
 
 $(document).ready( () => {
   
