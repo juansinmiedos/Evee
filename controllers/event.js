@@ -9,7 +9,18 @@ exports.viewEvent = (req, res) => {
 }
 
 exports.createEvent = async (req, res, next) => {
-  const { nameOfEvent, numberOfGuests, date, description, address, lng, lat, selectCake, selectFurniture, selectPhoto } = req.body
+  const {
+    nameOfEvent,
+    numberOfGuests,
+    date,
+    description,
+    address,
+    lng,
+    lat,
+    selectCake,
+    selectFurniture,
+    selectPhoto
+  } = req.body
   await Event.create({
     nameOfEvent,
     numberOfGuests,
@@ -28,7 +39,16 @@ exports.viewFurniture = (req, res) => {
 }
 
 exports.createFurniture = async (req, res, next) => {
-  const { typeOfTables, mobiliaryStyle, tableClothsAndChairs, tent, description, idEvent, limitPrice, color } = req.body
+  const {
+    typeOfTables,
+    mobiliaryStyle,
+    tableClothsAndChairs,
+    tent,
+    description,
+    idEvent,
+    limitPrice,
+    color
+  } = req.body
   await Furniture.create({
     typeOfTables,
     mobiliaryStyle,
@@ -80,13 +100,12 @@ exports.createCake = async (req, res, next) => {
 //Traemos la información de todos los modelos
 
 exports.viewEventPage = async (req, res) => {
-  const user = await User.find()
-  const event = await Event.find()
-  const furniture = await Furniture.find()
-  const cake = await Cake.find()
-  const photo = await Photo.find()
+  const event = await Event.findById(req.params.id)
+  const furniture = await Furniture.find({ idEvent: event.nameOfEvent })
+  const cake = await Cake.find({ idEvent: event.nameOfEvent })
+  const photo = await Photo.find({ idEvent: event.nameOfEvent })
 
-  res.render('event-page', { event, user, furniture, cake, photo })
+  res.render('event-page', { event, furniture, cake, photo })
 }
 
 exports.updateProfile = async (req, res) => {
