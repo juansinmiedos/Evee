@@ -9,12 +9,13 @@ $(document).ready( () => {
     form.style.display = "none";
 
    const furniture = {
+     idEvent: document.getElementById('furnitureIdEvent').value,
+     limitPrice: document.getElementById('furnitureLimitPrice').value,
+     color: document.getElementById('color').value,
      typeOfTables: document.getElementById('TypeOfTables').value,
      mobiliaryStyle: document.getElementById('MobiliaryStyle').value,
      tableClothsAndChairs: document.getElementById('tableClothsAndChairs').value,
-     //lace: document.getElementById('lace').value,
-     //tent: document.getElementById('tent').value,
-     //priceOfService: document.getElementById('furniturePriceOfService').value,
+     tent: document.getElementById('tent').value,
      description: document.getElementById('furnitureDescription').value
    }
     await furnituresAPI.createOneFurniture(furniture)

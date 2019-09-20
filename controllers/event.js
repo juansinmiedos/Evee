@@ -9,13 +9,16 @@ exports.viewEvent = (req, res) => {
 }
 
 exports.createEvent = async (req, res, next) => {
-  const { nameOfEvent, numberOfGuests, date, description, address, lng, lat } = req.body
+  const { nameOfEvent, numberOfGuests, date, description, address, lng, lat, selectCake, selectFurniture, selectPhoto } = req.body
   await Event.create({
     nameOfEvent,
     numberOfGuests,
     date,
     description,
-    address
+    address,
+    selectCake,
+    selectFurniture,
+    selectPhoto
   })
   res.render('auth/profile')
 }
@@ -25,13 +28,16 @@ exports.viewFurniture = (req, res) => {
 }
 
 exports.createFurniture = async (req, res, next) => {
-  const { typeOfTables, mobiliaryStyle, tableClothsAndChairs, tent, description } = req.body
+  const { typeOfTables, mobiliaryStyle, tableClothsAndChairs, tent, description, idEvent, limitPrice, color } = req.body
   await Furniture.create({
     typeOfTables,
     mobiliaryStyle,
     tableClothsAndChairs,
     tent,
-    description
+    description,
+    idEvent,
+    limitPrice,
+    color
   })
   res.render('auth/profile')
 }
@@ -41,11 +47,13 @@ exports.viewPhoto = (req, res, next) => {
 }
 
 exports.createPhoto = async (req, res, next) => {
-  const { typeOfAlbum, hoursOfService, description } = req.body
+  const { typeOfAlbum, hoursOfService, description, idEvent, limitPrice } = req.body
   await Photo.create({
     typeOfAlbum,
     hoursOfService,
-    description
+    description,
+    idEvent,
+    limitPrice
   })
   res.render('auth/profile')
 }
@@ -55,14 +63,16 @@ exports.viewCake = (req, res) => {
 }
 
 exports.createCake = async (req, res, next) => {
-  const { name, flavor, term, filling, floors, description } = req.body
+  const { name, flavor, term, filling, floors, description, idEvent, limitPrice } = req.body
   await Cake.create({
     name,
     flavor,
     term,
     filling,
     floors,
-    description
+    description,
+    idEvent,
+    limitPrice
   })
   res.render('auth/profile')
 }
