@@ -9,11 +9,21 @@ very easy way with a few clicks
 
 #
 
-## How to start using Evee
+## As a " Wedding Planner " you can...
 
-1. You can create a new account or use the one that is ready by default
+- Create wedding events.
 
-2.
+- Request furniture, cake and photo services.
+
+- See the details of each one of your weddings.
+
+#
+
+## As a " Supplier " you can...
+
+- See available events.
+
+- Look at the home feed.
 
 #
 
@@ -25,7 +35,7 @@ Email: zariel145@gmail.com
 
 Password: 1234
 
-#### Supplier Account
+#### Supplier Account:
 
 Email: juanvidaldom@hotmail.com
 
