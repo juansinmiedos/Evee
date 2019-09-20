@@ -20,6 +20,12 @@ $(document).ready( () => {
      address: document.getElementById('address').value,
      description: document.getElementById('description').value
    }
+
+   const idfactor = document.getElementById('nameOfEvent').value
+   document.getElementById('cakeIdEvent').value = idfactor
+   document.getElementById('furnitureIdEvent').value = idfactor
+   document.getElementById('photoIdEvent').value = idfactor
+
     await eventsAPI.createOne(event)
     console.log(event)
   }

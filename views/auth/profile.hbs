@@ -219,8 +219,8 @@
                     <form action="/create-cake" method="POST" id="cakeForm">
                       <!-- THIS SHOULD ALWAYS BE HIDDEN -->
                       <div class="form-group">
-                        <label for="">Id Event</label>
-                        <input type="text" class="form-control" name="idEvent" id="cakeIdEvent">
+                        <label for="">Event</label>
+                        <input type="text" class="form-control" name="idEvent" id="cakeIdEvent" readonly>
                       </div>
                       <!---->
                       <div class="form-group">
@@ -268,14 +268,9 @@
                         <input type="number" class="form-control" name="limitPrice" id="cakeLimitPrice"
                           placeholder="What's your budget for this?">
                       </div>
-                      <!---->
-                      {{!-- <div class="form-group">
-    <label for="">Upload an Image!</label><br>
-    <input  type="file" name="imgCake">
-  </div> --}}
-                      <div class="custom-file">
+                      {{!-- <div class="custom-file">
                         <input type="file" name="photosCake" value="Upload references" multiple>
-                      </div>
+                      </div> --}}
                       <input type="submit" class="btn btn-primary" name="" id="" value="Send cake request">
                     </form>
                   </div>
@@ -289,8 +284,8 @@
                     <form action="/create-furniture" method="POST" id="furnitureForm">
                     <!-- THIS SHOULD ALWAYS BE HIDDEN -->
                       <div class="form-group">
-                        <label for="">Id Event</label>
-                        <input type="text" class="form-control" name="idEvent" id="furnitureIdEvent">
+                        <label for="">Event</label>
+                        <input type="text" class="form-control" name="idEvent" id="furnitureIdEvent" readonly>
                       </div>
                       <div class="form-group">
                         <label for="">Type of tables</label>
@@ -349,10 +344,10 @@
                         <label for="">Max Budget</label>
                         <input type="number" class="form-control" name="limitPrice" id="furnitureLimitPrice"
                           placeholder="What's your budget for this?">
-                      </div>
+                      {{!-- </div>
                       <div class="custom-file">
                         <input type="file" name="photosFurniture" value="Upload references" multiple>
-                      </div>
+                      </div> --}}
                       <input type="submit" name="" class="btn btn-primary" value="Send furniture request">
                     </form>
                   </div>
@@ -364,8 +359,8 @@
                     <form action="/create-photo" method="POST" id="photoForm">
                     <!-- THIS SHOULD ALWAYS BE HIDDEN -->
                       <div class="form-group">
-                        <label for="">Id Event</label>
-                        <input type="text" class="form-control" name="idEvent" id="photoIdEvent">
+                        <label for="">Event</label>
+                        <input type="text" class="form-control" name="idEvent" id="photoIdEvent" readonly>
                       </div>
                       <div class="form-group">
                         <label for="">Type of album</label>
@@ -389,9 +384,9 @@
                         <input type="number" class="form-control" name="limitPrice" id="photoLimitPrice"
                           placeholder="What's your budget for this?">
                       </div>
-                      <div class="custom-file">
+                      {{!-- <div class="custom-file">
                         <input type="file" name="photosPhoto" value="Upload references" multiple>
-                      </div>
+                      </div> --}}
                       <input type="submit" class="btn btn-primary" name="" id="" value="Send photo request">
                     </form>
                   </div>
