@@ -5,7 +5,7 @@
 ## What is Evee?
 
 Evee is a new and powerful tool for Wedding Planners who need to manage their time and events in a
-very easy way with a few clicks
+very easy way with a few clicks.
 
 #
 
@@ -17,6 +17,8 @@ very easy way with a few clicks
 
 - See the details of each one of your weddings.
 
+![Evee Page](https://res.cloudinary.com/ironhacker/image/upload/v1568992316/Create-event_vldmal.png)
+
 #
 
 ## As a " Supplier " you can...
@@ -24,6 +26,8 @@ very easy way with a few clicks
 - See available events.
 
 - Look at the home feed.
+
+![Evee Supplier](https://res.cloudinary.com/ironhacker/image/upload/v1568992610/Supplier_jw6cq2.png)
 
 #
 
@@ -45,4 +49,4 @@ Password: 1234
 
 Happy wedding! 👰🏻🤵🏻
 
-[Go to the app!](https://thawing-refuge-57086.herokuapp.com/)
+[Go to the app!](https://aqueous-ocean-73744.herokuapp.com/)
