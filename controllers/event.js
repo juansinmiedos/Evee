@@ -105,11 +105,6 @@ exports.viewEventPage = async (req, res) => {
   const cake = await Cake.find({ idEvent: event.nameOfEvent })
   const photo = await Photo.find({ idEvent: event.nameOfEvent })
 
-  console.log('evento >>>>>>>', event)
-  console.log('furniture>>>>>>>', furniture)
-  console.log('cake>>>>>>', cake)
-  console.log('photo>>>>>', photo)
-
   res.render('event-page', { event, furniture, cake, photo })
 }
 
