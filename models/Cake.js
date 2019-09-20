@@ -13,7 +13,6 @@ const cakeSchema = new Schema(
     filling: String,
     floors: Number,
     description: String
-    //weddingPhotos: [String]
   },
   { timestamps: true }
 )

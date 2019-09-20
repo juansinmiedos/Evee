@@ -27,6 +27,5 @@ $(document).ready( () => {
    document.getElementById('photoIdEvent').value = idfactor
 
     await eventsAPI.createOne(event)
-    console.log(event)
   }
 })

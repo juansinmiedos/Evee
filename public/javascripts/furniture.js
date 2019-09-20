@@ -19,6 +19,5 @@ $(document).ready( () => {
      description: document.getElementById('furnitureDescription').value
    }
     await furnituresAPI.createOneFurniture(furniture)
-    console.log(furniture)
   }
 })

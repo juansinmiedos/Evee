@@ -16,6 +16,5 @@ $(document).ready( () => {
      description: document.getElementById('photoDescription').value
    }
     await photosAPI.createOnePhoto(photo)
-    console.log(photo)
   }
 })

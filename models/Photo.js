@@ -10,7 +10,6 @@ const photoSchema = new Schema(
     },
     hoursOfService: Number,
     description: String,
-    //weddingPhotos: [String]
   },
   { timestamps: true }
 )

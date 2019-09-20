@@ -19,6 +19,5 @@ $(document).ready( () => {
      description: document.getElementById('cakeDescription').value
    }
     await cakesAPI.createOneCake(cake)
-    console.log(cake)
   }
 })
