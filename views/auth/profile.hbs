@@ -84,7 +84,7 @@
     </div>
   </div>
 
-  <hr>
+  
   {{#equal this.user.role 'Wedding'}}
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -93,11 +93,11 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-        aria-selected="false">Offers received</a>
+        aria-selected="false">&nbsp;</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-        aria-selected="false">Confirmed deals</a>
+        aria-selected="false">&nbsp;</a>
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
@@ -393,7 +393,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onClick="window.location.reload();">Save changes</button>
+                <button type="button" class="btn btn-primary" onClick="window.location.reload();">Close window</button>
               </div>
             </div>
           </div>
@@ -433,7 +433,7 @@
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       <div class="content p-3">
-        <h3>Offers received</h3>
+        <h3>&nbsp;</h3>
         <div class="card mb-3">
           <div class="row no-gutters">
             <div class="col-md-5">
@@ -504,7 +504,7 @@
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
       <div class="content p-3">
-        <h3>Confirmed deals</h3>
+        <h3>&nbsp;</h3>
         <div class="card mb-3">
           <div class="row no-gutters">
             <div class="col-md-5">
@@ -726,7 +726,7 @@
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
       <div class="content p-3">
-        <h3>Confirmed deals</h3>
+        <h3>&nbsp;</h3>
         <div class="card mb-3">
           <div class="row no-gutters">
             <div class="col-md-5">
