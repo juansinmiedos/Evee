@@ -39,6 +39,10 @@ Password: 1234
 
 Email: juanvidaldom@hotmail.com
 
-Password 1234
+Password: 1234
 
 #
+
+Happy wedding! 👰🏻🤵🏻
+
+[Go to the app!](https://thawing-refuge-57086.herokuapp.com/)
