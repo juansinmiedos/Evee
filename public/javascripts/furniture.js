@@ -1,4 +1,4 @@
-const furnituresAPI = new APIHandler("http://localhost:3000")
+const furnituresAPI = new APIHandler("https://aqueous-ocean-73744.herokuapp.com")
 
 $(document).ready( () => {
   
