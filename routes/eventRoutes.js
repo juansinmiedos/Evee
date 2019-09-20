@@ -28,7 +28,7 @@ router.post('/create-photo', uploadCloud.array('photosPhoto'), createPhoto)
 router.get('/create-furniture', viewFurniture)
 router.post('/create-furniture', uploadCloud.array('photosFurniture'), catchErrors(createFurniture))
 
-router.get('/event-page', viewEventPage)
+router.get('/event-page/:id', viewEventPage)
 
 router.post('/profile', uploadCloud.single('photo'), catchErrors(updateProfile))
 

@@ -1,32 +1,19 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-  <a class="navbar-brand" href="#">Evee</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <a class="navbar-brand" href="#">Evee</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      {{#equal this.user.role "Supplier"}}
-      <li class="nav-item active">
-        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-      </li>
-      {{/equal}}
-      {{#unless this.user}}
-      <li class="nav-item active">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/signup">Signup</a>
-      </li>
-      {{/unless}}
-      <li class="nav-item active">
-        <a class="nav-link" href="/logout">Logout</a>
-      </li>
-    </ul>
-  </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
 </nav>
 
 <div class="container p-0 5 ">
@@ -34,51 +21,61 @@
     <div class="containe p-5">
       <div class="col-12">
         <div class="card mb-3">
-          <img src="https://cdn1.weddingwire.in/assets/img/home/bg_dresses1.jpg" class="card-img-top" alt="...">
+          <img src="http://www.aavawedding.com/wp-content/uploads/2016/03/1-1.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <!--Se deben poner if para no mostrar el texto en caso de que no se haya selecionado el servicio-->
             <h2>About the event</h2>
             <small><strong> Name of the event:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title">Andrés & Kike</p>
+            <p style="font-size: 1.5vw" class="card-title">{{event.nameOfEvent}}</p>
             <small><strong> Number of guests:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title">140</p>
+            <p style="font-size: 1.5vw" class="card-title">{{event.numberOfGuests}}</p>
             <small><strong> Address:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title">Tonala 10</p>   
+            <p style="font-size: 1.5vw" class="card-title">{{event.address}}</p>
             <small><strong> Date:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title"> 10 De Febrero del 2020</p> 
+            <p style="font-size: 1.5vw" class="card-title">{{event.date}}</p>
             <small><strong> Description:</strong></small>
-              <p class="card-title">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable</p> 
+            <p class="card-title">{{event.description}}</p>
             <hr>
             <!--Se deben poner if para no mostrar el texto en caso de que no se haya selecionado el servicio-->
+            {{#if cake}}
             <h2>Cake</h2>
             <small><strong> Name:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title">Test test tes</p>
+            <p style="font-size: 1.5vw" class="card-title">{{cake.[0].name}}</p>
             <small><strong> Flavor:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title">Test test tes</p>
+            <p style="font-size: 1.5vw" class="card-title">{{cake.[0].flavor}}</p>
             <small><strong> Type of cover:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title">Test test tes</p>
+            <p style="font-size: 1.5vw" class="card-title">{{cake.[0].term}}</p>
             <small><strong> Filling:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title">Test test tes</p>
+            <p style="font-size: 1.5vw" class="card-title">{{cake.[0].filling}}</p>
             <small><strong>Floors:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title">Test test tes</p>
+            <p style="font-size: 1.5vw" class="card-title">{{cake.[0].floors}}</p>
             <small><strong>Description:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title">Test test tes</p>
+            <p style="font-size: 1.5vw" class="card-title">{{cake.[0].description}}</p>
             <hr>
+            {{/if}}
             <!--Se deben poner if para no mostrar el texto en caso de que no se haya selecionado el servicio-->
+            {{#if furniture}}
             <h2>Furniture</h2>
             <small><strong> Type of tables:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title">Test test tes</p>
+            <p style="font-size: 1.5vw" class="card-title">{{furniture.[0].typeOfTables}}</p>
             <small><strong> Mobiliary style:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title">Test test tes</p>
+            <p style="font-size: 1.5vw" class="card-title">{{furniture.[0].mobiliaryStyle}}</p>
             <small><strong> Table & chairs style:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title">Test test tes</p>
+            <p style="font-size: 1.5vw" class="card-title">{{furniture.[0].tableClothsAndChairs}}</p>
             <small><strong> Description:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title">Test test tes</p>
-            <small><strong>Floors:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title">Test test tes</p>
-            <small><strong>Photos:</strong></small>
-              <p style="font-size: 1.5vw" class="card-title">Test test tes</p>
+            <p style="font-size: 1.5vw" class="card-title">{{furniture.[0].description}}</p>
             <hr>
+            {{/if}}
+            {{#if photo}}
+            <h2>Photo</h2>
+            <small><strong> Type of album:</strong></small>
+            <p style="font-size: 1.5vw" class="card-title">{{photo.[0].typeOfAlbum}}</p>
+            <small><strong> Hours of service:</strong></small>
+            <p style="font-size: 1.5vw" class="card-title">{{photo.[0].hoursOfService}}</p>
+            {{/if}}
+            <a href="/profile">
+              <button href="/profile" class="btn btn-success">Go to profile</button>
+            </a>
           </div>
         </div>
       </div>
